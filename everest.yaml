@@ -1,0 +1,29 @@
+- Name: mirrors_a_game_by_Edge
+  Version: 0.0.1
+  Dependencies:
+    - Name: AdamsAddons
+      Version: 1.10.1
+    - Name: ChroniaHelper
+      Version: 1.19.14
+    - Name: CrystallineHelper
+      Version: 1.15.3
+    - Name: Errand Of Wednesday
+      Version: 0.1.4
+    - Name: Everest
+      Version: 1.4783.0
+    - Name: ExtendedVariantMode
+      Version: 0.38.0
+    - Name: FlaglinesAndSuch
+      Version: 1.6.22
+    - Name: FrostHelper
+      Version: 1.50.9
+    - Name: GravityHelper
+      Version: 1.2.15
+    - Name: MaxHelpingHand
+      Version: 1.30.6
+    - Name: VivHelper
+      Version: 1.13.2
+    - Name: What Are Little Decades Made Of
+      Version: 1.0.0
+    - Name: XaphanHelper
+      Version: 1.0.62
