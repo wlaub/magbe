@@ -62,7 +62,8 @@ class Spinner:
 
         self.N = N
         #0.83 or 1.16
-        s = 8-0.5*.84*PXPMM
+#        s = 8-0.5*.84*PXPMM
+        s = 8
         self.s = s
         self.r = s/math.cos(math.pi/N)
 
@@ -89,11 +90,7 @@ class Spinner:
 
 #        pygame.gfxdraw.pixel(target, int(x),int(y), (0,0,0))
 
-    def render_shape_back(self, target, xoff, yoff, selected):
-        x = self.x-xoff
-        y = self.y-yoff
-
-        r = self.r+2
+    def get_verts(self, r, x, y):
         verts = []
         N = self.N
         for i in range(N):
@@ -102,36 +99,41 @@ class Spinner:
                 r*math.cos(a)+x,
                 r*math.sin(a)+y
                 ))
+        return verts
+
+
+    def render_shape_back(self, target, xoff, yoff, selected, tracing):
+        x = self.x-xoff
+        y = self.y-yoff
+
+        verts = self.get_verts(self.r+1.5, x, y)
 
         try:
             c = (0,0,0)
-            pygame.gfxdraw.filled_polygon(target, verts, c)
+            if tracing:
+                c = (255,255,255)
             pygame.gfxdraw.aapolygon(target, verts, c)
+            pygame.gfxdraw.filled_polygon(target, verts, c)
+
         except Exception as e:
             print(e)
 
 
 
-    def render_shape(self, target, xoff, yoff, selected, layer):
+    def render_shape(self, target, xoff, yoff, selected, layer, tracing):
         x = self.x-xoff
         y = self.y-yoff
 
-
-        verts = []
-        N = self.N
-        for i in range(N):
-            a = self.a+i*2*math.pi/N
-            verts.append((
-                self.r*math.cos(a)+x,
-                self.r*math.sin(a)+y
-                ))
+        verts = self.get_verts(self.r-1.5, x, y)
 
         colors = {0: (255,0,64),
-                  1:(128,0,0),
+                  1:(255,64,0),
                   }
 
         try:
             c = colors.get(layer, (255,0,255))
+            if tracing:
+                c = (0,0,0)
             pygame.gfxdraw.filled_polygon(target, verts, c)
             pygame.gfxdraw.aapolygon(target, verts, c)
         except Exception as e:
@@ -193,6 +195,8 @@ class EditWindow:
 
         self.loaded_filename = None
         self.foreground = None
+        self.fg_image_layers = {}
+        self.bg_image_layers = {}
 
     def get_scale(self):
         if self.real_size:
@@ -245,11 +249,11 @@ class EditWindow:
         self.loaded_filename = filename
 
     def update_spinners(self, filename):
-         with open(filename, 'r') as fp:
+        with open(filename, 'r') as fp:
             data = json.load(fp)
 
-         new_spinners = {x['eid']: Spinner(**x) for x in data['spinners']}
-         for new in new_spinners.values():
+        new_spinners = {x['eid']: Spinner(**x) for x in data['spinners']}
+        for new in new_spinners.values():
             for layer, spinners in self.spinner_map.items():
                 if new.eid in spinners.keys():
                     old = spinners[new.eid]
@@ -259,6 +263,17 @@ class EditWindow:
             else:
                 self.spinners.append(new)
                 self.spinner_map[new.layer][new.eid] = new
+
+        to_remove = []
+        for layer, spinners in self.spinner_map.items():
+            for eid, old in spinners.items():
+                if eid not in new_spinners.keys():
+                    to_remove.append((layer, eid, old))
+
+        for layer, eid, old in to_remove:
+            print(f'Removed {eid} on update')
+            self.spinner_map[layer].pop(eid)
+            self.spinners.remove(old)
 
     def dirty_check(self):
         print('dirty check')
@@ -352,7 +367,7 @@ class EditWindow:
 
 #        self.dirty_check()
 
-    def render(self, screen):
+    def render(self, screen, button_map):
         x,y,w,h = self.area
         xpos, ypos = self.view.get_pos()
         scale = self.get_scale()
@@ -373,19 +388,33 @@ class EditWindow:
         right = left+w_real
         bot = top+h_real
 
+        for name, image_surface in self.bg_image_layers.items():
+            if name in button_map.keys() and button_map[name].state:
+               target.blit(image_surface, (0,0),
+                       pygame.Rect(
+                            xpos+1649, ypos+2425,
+                            w_real, h_real
+                            )
+                        )
+
+
+
         for layer, spinners in list(self.spinner_map.items())[::-1]:
 
-            for spinner in spinners.values():
-                if spinner.x < left-32 or spinner.x > right+32 or spinner.y < top-32 or spinner.y > bot+32:
-                    pass
-                spinner.render_shape_back(target, xpos, ypos, spinner==self.selection)
-
-
+            if layer in button_map.keys() and not button_map[layer].state:
+                continue
 
             for spinner in spinners.values():
                 if spinner.x < left-32 or spinner.x > right+32 or spinner.y < top-32 or spinner.y > bot+32:
                     pass
-                spinner.render_shape(target, xpos, ypos, spinner==self.selection, layer)
+                spinner.render_shape_back(target, xpos, ypos, spinner==self.selection, self.real_size)
+
+
+
+            for spinner in spinners.values():
+                if spinner.x < left-32 or spinner.x > right+32 or spinner.y < top-32 or spinner.y > bot+32:
+                    pass
+                spinner.render_shape(target, xpos, ypos, spinner==self.selection, layer, self.real_size)
 
 
             if self.show_hitboxes:
@@ -401,13 +430,14 @@ class EditWindow:
         #### foreground render
 #        1648, 2423
 
-        if self.foreground is not None:
-           target.blit(self.foreground, (0,0),
-                   pygame.Rect(
-                        xpos+1649, ypos+2425,
-                        w_real, h_real
+        for name, image_surface in self.fg_image_layers.items():
+            if name in button_map.keys() and button_map[name].state:
+               target.blit(image_surface, (0,0),
+                       pygame.Rect(
+                            xpos+1649, ypos+2425,
+                            w_real, h_real
+                            )
                         )
-                    )
 
         if self.selection is not None:
             self.selection.render(target, xpos, ypos, True)
@@ -448,6 +478,46 @@ class EditWindow:
 
         pass
 
+class Button():
+    def __init__(self, x, y, w, h, state, name):
+        self.x = x
+        self.y = y
+        self.w = w
+        self.h = h
+        self.state = state
+        self.name = name
+
+        self.xoff = 0
+        self.yoff = 0
+
+    def toggle(self, mpos):
+        x = self.xoff+self.x
+        y = self.yoff+self.y
+        w = self.w
+        h = self.h
+
+        if mpos[0] < x or mpos[0] > x+w or mpos[1] < y or mpos[1] > y+h:
+            return
+        self.state = not self.state
+
+    def render(self, screen):
+        x = self.xoff+self.x
+        y = self.yoff+self.y
+        w = self.w
+        h = self.h
+
+        bg = (255,128,128)
+        if self.state:
+            bg = (128,255,255)
+
+        pygame.gfxdraw.box(screen, pygame.Rect(x,y,w,h), bg)
+        pygame.gfxdraw.rectangle(screen, pygame.Rect(x,y,w,h), (0,0,0))
+        label = str(self.name)
+        fs = font.render(label, True, (0,0,0))
+        fw,fh = fs.get_size()
+        screen.blit(fs, (x+(w-fw)/2, y+(h-fh)/2))
+
+
 info = pygame.display.Info()
 w = info.current_w
 h = info.current_h
@@ -459,9 +529,45 @@ Spinner.init()
 down_pos = {x:(0,0) for x in (LMB, MMB, RMB)}
 monitor_index = 0
 
+fg_image_layers = {}
+bg_image_layers = {}
+
 foreground = pygame.image.load('foreground.png')
 foreground.convert_alpha()
-edit_window.foreground = foreground
+fg_image_layers['foreground'] = foreground
+
+foreground = pygame.image.load('background_decals.png')
+foreground.convert_alpha()
+bg_image_layers['bg decals'] = foreground
+
+
+
+edit_window.fg_image_layers = fg_image_layers
+edit_window.bg_image_layers = bg_image_layers
+
+controls_width = 100
+
+
+buttons = []
+
+buttons.extend([
+Button(0, 25*i, controls_width, 20, True, x) for i,x in enumerate(fg_image_layers.keys())
+])
+
+yoff = len(buttons)
+render_layers = [0, 1, 2]
+buttons.extend([
+Button(0, 25*(i+yoff), controls_width, 20, True, x) for i,x in enumerate(render_layers)
+])
+
+yoff = len(buttons)
+buttons.extend([
+Button(0, 25*(i+yoff), controls_width, 20, True, x) for i,x in enumerate(bg_image_layers.keys())
+])
+
+
+
+button_map = {x.name: x for x in buttons}
 
 while True:
     start_time = time.time()
@@ -474,7 +580,10 @@ while True:
 
     mpos = pygame.mouse.get_pos()
 
-    edit_window.area = (5,20, w-10, h-30)
+
+    controls_area = (w-controls_width-5, 20, controls_width, h-25)
+
+    edit_window.area = (5,20, w-15-controls_width, h-25)
 
     monitors = screeninfo.get_monitors()
     monitor = monitors[monitor_index]
@@ -482,6 +591,10 @@ while True:
 
     grid_size = pxpmm/PXPMM
     edit_window.window_scale = grid_size
+
+    for button in buttons:
+        button.xoff = controls_area[0]
+        button.yoff = controls_area[1]
 
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -518,6 +631,8 @@ while True:
             down_pos[event.button] = mpos
             if event.button == LMB:
                 edit_window.try_select(mpos)
+                for button in buttons:
+                    button.toggle(mpos)
                 pass
             elif event.button == MMB:
                 edit_window.view.start(*mpos)
@@ -550,7 +665,10 @@ while True:
 #        edit_window.set_drag( -(mpos[0]-down_pos[RMB][0]), -(mpos[1]-down_pos[RMB][1]))
 
 
-    edit_window.render(screen)
+    edit_window.render(screen, button_map)
+
+    for button in buttons:
+        button.render(screen)
 
     pygame.display.update()
 

@@ -27,7 +27,7 @@ function script.prerun(args)
     io.output(file)
     for _,room in ipairs(state.map.rooms) do
         for _,entity in ipairs(room.entities) do
-            if entity._name == "FrostHelper/IceSpinner" then
+            if entity._name == "eow/InvisibleSpinner" then
 --                entity.x = entity.x+offset_x
 --                entity.y = entity.y+offset_y
                 io.write(string.format("{\"x\": %f, \"y\": %f, \"eid\": %i},", 
