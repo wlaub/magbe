@@ -102,7 +102,27 @@ class Spinner:
         return verts
 
 
+    def render_shape_outline(self, target, xoff, yoff, selected, tracing, scale):
+        x = self.x*scale-xoff
+        y = self.y*scale-yoff
+
+        r = self.r*scale
+        while r > 0:
+            verts = self.get_verts(r, x, y)
+            r -= 6*scale
+
+            try:
+                c = (255,255,255)
+                pygame.gfxdraw.aapolygon(target, verts, c)
+
+            except Exception as e:
+                print(e)
+
+
+
     def render_shape_back(self, target, xoff, yoff, selected, tracing):
+        if tracing:
+            return
         x = self.x-xoff
         y = self.y-yoff
 
@@ -124,6 +144,10 @@ class Spinner:
         x = self.x-xoff
         y = self.y-yoff
 
+        r = self.r-1.5
+        if tracing:
+            r = self.r
+
         verts = self.get_verts(self.r-1.5, x, y)
 
         colors = {0: (255,0,64),
@@ -133,7 +157,7 @@ class Spinner:
         try:
             c = colors.get(layer, (255,0,255))
             if tracing:
-                c = (0,0,0)
+                c = (128,128,128)
             pygame.gfxdraw.filled_polygon(target, verts, c)
             pygame.gfxdraw.aapolygon(target, verts, c)
         except Exception as e:
@@ -316,6 +340,18 @@ class EditWindow:
 
         return pos
 
+    def local_to_screen(self, pos):
+        x,y,w,h = self.area
+        xpos, ypos = self.view.get_pos()
+        scale = self.get_scale()
+
+        pos = list(pos)
+
+        pos[0] = (pos[0]-xpos)*scale-w/2
+        pos[1] = (pos[1]-ypos)*scale-h/2
+        return pos
+
+
     def in_bounds(self, pos):
         x,y,w,h = self.area
         return not( pos[0] < x or pos[0] > x+w or pos[1] < y or pos[1] > y+h)
@@ -423,8 +459,12 @@ class EditWindow:
                         pass
                     spinner.render(target, xpos, ypos, spinner==self.selection)
 
+
+
         if False:
             pygame.gfxdraw.pixel(target, int(self.mpos[0]-xpos), int(self.mpos[1]-ypos), (0,255,255))
+
+
 
 
         #### foreground render
@@ -445,10 +485,32 @@ class EditWindow:
 
         target = pygame.transform.scale_by(target, scale)
 
+
+        xpos *= scale
+        ypos *= scale
+        if self.real_size:
+            for layer, spinners in list(self.spinner_map.items())[::-1]:
+
+                if layer in button_map.keys() and not button_map[layer].state:
+                    continue
+
+                for spinner in spinners.values():
+                    if spinner.x < left-32 or spinner.x > right+32 or spinner.y < top-32 or spinner.y > bot+32:
+                        pass
+                    spinner.render_shape_outline(target, xpos, ypos, spinner==self.selection, self.real_size, scale)
+
+        if 'verge' in button_map.keys() and button_map['verge'].state:
+            pygame.gfxdraw.box(target, pygame.Rect(0, 9*8*scale-ypos, w, 16*scale), (0,0,0))
+            pygame.gfxdraw.hline(target, 0, int(w), int(9*8*scale-ypos), (255,255,255))
+            pygame.gfxdraw.hline(target, 0, int(w), int(11*8*scale-ypos), (255,255,255))
+
+
         #### Grid Render
         gx, gy = self.screen_to_local((x,y))
         gx = gx-int(gx/8)*8
         gy = gy-int(gy/8)*8
+
+
 
         if self.show_grid or self.real_size:
             if self.real_size:
@@ -490,7 +552,11 @@ class Button():
         self.xoff = 0
         self.yoff = 0
 
-    def toggle(self, mpos):
+    def toggle(self, mpos = None):
+        if mpos is None:
+            self.state = not self.state
+            return
+
         x = self.xoff+self.x
         y = self.yoff+self.y
         w = self.w
@@ -555,7 +621,7 @@ Button(0, 25*i, controls_width, 20, True, x) for i,x in enumerate(fg_image_layer
 ])
 
 yoff = len(buttons)
-render_layers = [0, 1, 2]
+render_layers = [0, 1, 2, 'verge']
 buttons.extend([
 Button(0, 25*(i+yoff), controls_width, 20, True, x) for i,x in enumerate(render_layers)
 ])
@@ -565,9 +631,14 @@ buttons.extend([
 Button(0, 25*(i+yoff), controls_width, 20, True, x) for i,x in enumerate(bg_image_layers.keys())
 ])
 
-
-
 button_map = {x.name: x for x in buttons}
+
+layer_toggle_map = {
+    K_1: 0,
+    K_2: 1,
+    K_3: 2,
+    K_4: 'verge',
+}
 
 while True:
     start_time = time.time()
@@ -603,7 +674,15 @@ while True:
                 pygame.quit()
                 exit()
         elif event.type == KEYDOWN:
-            if event.key == K_s:
+            if event.key in layer_toggle_map.keys():
+                button_map[layer_toggle_map[event.key]].toggle()
+            elif event.key == K_BACKQUOTE:
+                for k in fg_image_layers.keys():
+                    button_map[k].toggle()
+                for k in bg_image_layers.keys():
+                    button_map[k].toggle()
+
+            elif event.key == K_s:
                 edit_window.save(OUTFILE)
             elif event.key == K_F5:
                 edit_window.update_spinners(INFILE)
