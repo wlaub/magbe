@@ -136,17 +136,17 @@
   </Tileset>
 	
   <Tileset id="o" copy="q" path="iambad/waldmo/tamepink" sound="43"/>
-  <Tileset id="O" copy="q" path="iambad/waldmo/brightblue" sound="43"/>
-  <Tileset id="p" copy="q" path="iambad/waldmo/vividblue" sound="43"/>
+  <Tileset id="O" copy="q" path="iambad/waldmo/backlitplain" sound="43"/>
+  <Tileset id="p" copy="q" path="iambad/waldmo/overcastred" sound="43"/>
 
-  <Tileset id="Q" copy="q" path="iambad/waldmo/darkyellow" sound="43"/>
-  <Tileset id="r" copy="q" path="iambad/waldmo/brightyellow" sound="43"/>
-  <Tileset id="R" copy="q" path="iambad/waldmo/vividyellow" sound="43"/>
+  <Tileset id="Q" copy="q" path="iambad/waldmo/overcastblue" sound="43"/>
+  <Tileset id="r" copy="q" path="iambad/waldmo/stainedred" sound="43"/>
+  <Tileset id="R" copy="q" path="iambad/waldmo/stainedblue" sound="43"/>
 
-  <Tileset id="s" copy="q" path="iambad/waldmo/vividred2" sound="43"/>
-  <Tileset id="S" copy="q" path="iambad/waldmo/brightred2" sound="43"/>
-  <Tileset id="t" copy="q" path="iambad/waldmo/vividred" sound="43"/>
-  <Tileset id="T" copy="q" path="iambad/waldmo/sinisterred" sound="43"/>
+  <Tileset id="s" copy="q" path="iambad/waldmo/stainedplain" sound="43"/>
+  <Tileset id="S" copy="q" path="iambad/waldmo/stainedcopper" sound="43"/>
+  <Tileset id="t" copy="q" path="iambad/waldmo/stainedflesh" sound="43"/>
+  <Tileset id="T" copy="q" path="iambad/waldmo/stainedwall" sound="43"/>
 
   <Tileset id="u" copy="q" path="iambad/waldmo/darkblack" sound="43"/>
   <Tileset id="U" copy="q" path="iambad/waldmo/brightblack" sound="43"/>

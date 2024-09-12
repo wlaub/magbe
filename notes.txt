@@ -1,0 +1,47 @@
+revised foreground tiles
+removed most old spinners
+added some transition blockers and lightbeams
+added notes file
+
+
+TODO:
+now:
+
+make test underside hazards
+make test shroom bgs
+
+adjust tileset cropping offset to try to improve alignment
+add corner masking to new tilesets
+add tameplain tileset
+
+test transition blockers and lightbeams
+
+figure out dr room placement
+
+figure out underside tile design
+    rectilinear
+    reduce to critical geometry
+    account overside hazard structure
+        e.g. for non-regtangular components
+        and intrusions
+
+create remaining underside hazard decals:
+    identify critical and special underside hazard geometries
+
+create overside hazard decals
+    figure out overside modular mushroom spikes and spinners
+
+make ground decals
+    small mushrooms
+    figure out underside ground decoration
+
+make parallax decals
+    various mushrooms
+    figure out underside parallax decoration
+
+updraft:
+
+plain spikes
+plain spinners
+
+
