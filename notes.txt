@@ -2,7 +2,8 @@ revised foreground tiles
 removed most old spinners
 added some transition blockers and lightbeams
 added notes file
-
+added some spawn gravity triggers
+first room decoration prototyping
 
 TODO:
 now:
@@ -39,9 +40,114 @@ make parallax decals
     various mushrooms
     figure out underside parallax decoration
 
+maybe some kind of decal to indicate spawn locations that fix gravity?
+final climb mirror decals
+secret mirror decals
+a secret for backtracking from the first main room back to the temple area
+a secret room above the first double refill
+    requires bubbling back, waiting for respawn, then jumping left and dashing up through the refill
+
+postcard
+lore
+    all the mechanical complexity of a teapot
+hydrants
+
 updraft:
 
 plain spikes
 plain spinners
+
+e-15
+e-16
+e-17
+e-14
+e-13
+e-12
+e-12b
+e-11
+e-09
+e-07
+e-08
+e-fill-4
+x-cc-00
+x-techtest
+e-04l
+b-00b
+b-00a
+b-00
+f-00
+f-01
+c-00
+c-01
+c-01b
+c-01c
+c-02
+c-03
+c-04
+c-05
+c-06
+c-07
+c-08
+c-09
+c-10
+c-11
+c-12
+c-13
+c-14
+c-15
+c-15x
+c-16
+
+
+Description:
+
+You guys remember that game "The Verge" by xerus? Neither do I, apparently. This is a map loosely based on what I remember of Verge after 15 years. I just stumbled on a dream block mechanic that reminded me of the gravity thing in Verge and decided to make a "quick" "little" map demonstrating it.
+
+This map is roughly beginner difficulty with a few wavedashes sprinkled in, but there are also opportunities to use more advanced tech and there are more difficult routes to be found if you feel like it. I would not advise restricting yourself to any particular mechanics based on the minimum difficulty unless you want to.
+
+~ 20 rooms (depending how you count) #TODO update this
+a few small secrets
+gravity flipping
+dream blocks
+
+Works Cited: #TODO did i miss any?
+
+Verge - Kyle Pulver
+https://www.youtube.com/watch?v=D1WnmN6fsRo
+https://forums.tigsource.com/index.php?topic=3420.0
+
+Diamond Rider - Romeopie Software
+https://www.tigsource.com/2008/02/18/gdc-game-collaboration-1-diamond-rider/
+
+Framework - tobyaaa
+https://gamebanana.com/mods/478257
+
+"All the mechanical complexity of a teapot." - smithy
+https://forums.tigsource.com/index.php?topic=2291.msg57242#msg57242
+
+"Everything is fine." - various authors
+
+Development Notes:
+
+One day I was wondering how you could go about making dream blocks interesting without a dash, and the first idea that came to mind was what if you could also enter a dream block by fast-falling? In the same thought, I realized that it would be very natural to reverse gravity when you came out the other side. I had wanted to have custom dream block graphics in The Wednesday On The Edge Of Forever, but the existing dream blocks didn't support the kind of paralax grid effect I wanted, and at the time I figured that implementing my own was out of scope, so I just stuck with regular dream blocks and made them into squares to make corners seem less awkward. Now, though, I had a reason to make my own custom dream block. Maybe I could even fix room transitions! So I set to work making the PlaidBlock, and then the instant I tried out the gravity flipping fallthrough mechanic I realized what I had done and changed the name to VergeBlock.
+
+I had actually forgotten that Verge had that whole deathwarp/darkworld thing. I only remember the part where the two worlds came together and the upside down gravity went from a cosmetic interface screw to an actual mechanic. That's why there's such a heave emphasis on gravity flipping in this map.
+
+
+I found in The Wednesday On The Edge Of Forever that I often wanted to place spinners that were functionally cosmetic, but past a certain point I was concerned about performance. Every one of those spinners is still doing all its collision checks, and at the time that I started the map, I was using a computer from 2009 that was struggling with the Strawberry Jam advanced heartside and made certain rooms of The Secret of Celeste Mountain completely unplayable (for no discernible reason). I went ahead placing spinners freely with the intent to come back later and replace most of them with decals if it proved to be an issue. Later, I booted up my old computer to try it out, and the spinners were not a problem (large dash blocks are another story, and for the largest dash block I had to sort of design the routing around the possibility that some players might have a couple seconds of unplayability - hence the neutral setup, which lets you just take your hands off the controller until things stabilize). For the most part, though, I wasn't really happy with the spinners in The Wednesday On The Edge Of Forever. I liked the dandelion spinner (aside from some rendering issues caused by using very large background sprites) and was okay with the blue and red special spinners (the screw head and sort of bubble thing (hot glue blobs under blue light)), but the regular spinners were kind of poorly shaped and presented an ugly outline (and sometimes ugly colors too). I have not tried too hard, but I have a hard time wrapping my head around spinner graphic design, and it seems like it relies heavily on pixel-perfect graphics to blend things together. You cannot get pixel perfect graphics by photographing hand-drawn images and messing with the contrast and brightness. I spent a long time trying to figure out spinners for that map, and it doesn't show.
+
+I was having a hard time coming up with color scheming for this map, and hadn't really figured out what I wanted to do with spinners either. I just put down red and blue spinners in the default sprites as placeholders so I could get to the mapping. Layer I decided that maybe I could just hand-draw hazards and use invisible spinners to give them collision. If you were good at art, you might use both discrete spinners with sprites (for numerous small hazards) and only make custom images for large and less numerous hazards. I think this also has the potential to solve the spinner tiling and grid problem. There is a certain amount of effort you save by not having to worry much about where you place spinners visually. It puts some weird constraints on the shapes of hazards that you can build out of spinners without starting to look bad. If you have the ability to quickly draw custom assets for large hazards, then you only have to worry about the collision geometry. I don't know if there is a person on the planet this is worthwhile for, but it's an option. I felt that it was pretty reasonable to try on a small map like this, though, and it saved me the trouble of coming up with a spinner sprite. I could just draw whatever and then mess with the colors a bunch.
+
+I had similar problems designing the terrain, so I attempted a similar solution. This asset creation technique works really well for large images like the end screens for The Wednesday Machine and The Wednesday On The Edge Of Forever, and doesn't hold up as well for things like tilesets, which can't really represent large visual structures like a gradient across a large piece of terrain. Sprites require a lot of careful manipulation to get the sizes and outlines just right, and they are small relative to the typical sorts of error involved in hand drawing (for me at least, not an artist). Much larger objects minimize that error and are generally faster to extract and manipulate (and they don't have a bunch of tiny parts that need to line up just right like sprites do). 
+
+
+An unfortunate side effect of this being a Verge map is that it means I can't really use the Vergeblock mechanic anywhere except a straight line through the middle of the block, which really limits the things I can do with it. That and I'm also incapable of having ideas. I wind up spending a lot of time on just one side of the verge block with a few short segments of verge gameplay in between for most of the map. Part of this is because I actually don't like a lot of gravity helper gameplay, and in particular I don't like doing tech with frequent gravity swaps. I think that the verge block provides a nice buffer for switching modes while you move through it, but I still didn't want it to become an obstacle to progression. I feel like I should have more of a verge focus in the map, but I also don't really want to have more than one sequence the length of the final verge room (which I made before starting this map just to play around with the idea). Unfortunately, I kind of feel like a lot of the map is effectively filler. I don't think there's anything wrong with filler gameplay if it has something else going on like some interesting visual/geographic theme or other narrative relevance. The problem is that sort of thing is where I have ideas the least. The best I can do is "i dunno some kind of like trees plants mushrooms roots?". I was sort of trying to avoid using entities other than the verge block (though I still dropped a few springs around by accident), which I think makes the non-verge gameplay feel kind of empty. At a certain point it's just wavedash wavedash wallbounce yawn. I really like spinner mazes, but when you wrap the intended routes in spinners and trigger spikes, you run the risk of making something that is maybe fun to play but also just thematically very boring. So to try to compensate, I designed each room with a particular route in mind, but I didn't shrink wrap it in hazards. You don't have to do the whote route in one shot without breaks if you don't want. You can skip a lot of tech if you want. I don't think the designed routes are readily apparent a lot of the time (not counting the mirror routes), and I hope that will yield some interest as it forces the player to engage with the space a little bit more. Since most of the map is very easy to progress through, I think there's a good chance a lot of players will just breeze safely and quickly through most of the game like it's just connective tissue, which will hopefully make the interesting parts stand out more. At the same time if you want to look for more difficult or more interesting routes, the option is there. I'm basically doing the same thing I did in The Wednesday On The Edge Of Forever - compensating for my lack of creativity by trying to provide an adequate space for players to fill with their own better ideas.
+
+
+As a child, I was very excited for Descent 3, and when it came out I loved it. Looking back now, I am kinda of disappointed. It doesn't feel like what Descent 2 meant when it said "To Be COntinued". What was the deal with the planetoid starship? If Dravis wanted you dead, why would he make the warp core send you back to the solar system where you might be rescues instead of warping you into deep space or some remote alien star system where you'd have no chance of making it home. Why did they make Dravis *evil*? Not that he wasn't evil before, but it was the cold evil of raw capitalism. He wasn't malicious - he was just trying to make a profit. He wouldn't warp you into the sun to destroy the evidence - he would detect that your ship had been infected by the alien virus and warp you into deep space to prevent to the company from losing any more assets.
+
+The game was technically proficient - I had no issues with the mechanics or the game design. It could have taken its bland Red Faction practice run and made an entirely new 6DOF instead. It's a fine game - it's just not really Descent 3.
+
+There is one thing in particular, though, that stands out to me. I loved it then, and I loved it now. You're flying around the surface of -hoth- the moon, you find a way underground, and suddenly realize that *you've been here before* - it's the remains of the first level of Descent 1. I love that sort of thing. I loved it when Dark Souls 3 did it too. Hmmmmm. Do you suppose Half-life 3 would have revisited Black Mesa?
 
 
