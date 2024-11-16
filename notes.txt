@@ -1,41 +1,39 @@
-revised foreground tiles
-removed most old spinners
-added some transition blockers and lightbeams
-added notes file
-added some spawn gravity triggers
-first room decoration prototyping
-bottom side terrain decoration prototyping
-
 TODO:
 now:
 
-make test underside hazards
-make test shroom bgs
+solve room-spanning decals
+
+finalize underside terrain
+finalize underside mushroom hazards
+
+create mushroom caps
+    (overside and hazard)
+
+create mushroom gills
+    (overside and hazard)
+
+create mushroom stems
+
+identify critical and special underside hazard geometries
+
+create mushroom spikes
+create mushroom spike stems
+
+create single-triangle spinner sprites
+create triangle clump hazards
+
+create rectangular terrain decals
+
 
 adjust tileset cropping offset to try to improve alignment
 add corner masking to new tilesets
 add tameplain tileset
-
-X test transition blockers and lightbeams
-X  doesn't block when gravity flipped
 
 finalize transition blocker lightbeams
 fix transition blocks (use kill player trigger?)
 
 figure out dr room placement
 
-figure out underside tile design
-    rectilinear
-    reduce to critical geometry
-    account overside hazard structure
-        e.g. for non-regtangular components
-        and intrusions
-
-create remaining underside hazard decals:
-    identify critical and special underside hazard geometries
-
-create overside hazard decals
-    figure out overside modular mushroom spikes and spinners
 
 make ground decals
     small mushrooms
