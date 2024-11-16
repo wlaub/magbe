@@ -4,6 +4,7 @@ added some transition blockers and lightbeams
 added notes file
 added some spawn gravity triggers
 first room decoration prototyping
+bottom side terrain decoration prototyping
 
 TODO:
 now:
@@ -15,7 +16,11 @@ adjust tileset cropping offset to try to improve alignment
 add corner masking to new tilesets
 add tameplain tileset
 
-test transition blockers and lightbeams
+X test transition blockers and lightbeams
+X  doesn't block when gravity flipped
+
+finalize transition blocker lightbeams
+fix transition blocks (use kill player trigger?)
 
 figure out dr room placement
 
