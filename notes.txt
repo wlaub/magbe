@@ -1,3 +1,7 @@
+removed some background tiles
+roughing out topside hazards
+recording shroom shapes
+
 TODO:
 now:
 
@@ -5,6 +9,10 @@ solve room-spanning decals
 
 finalize underside terrain
 finalize underside mushroom hazards
+add more underside decorative terrain?
+
+figure out terrain colors
+
 
 create mushroom caps
     (overside and hazard)
@@ -42,6 +50,9 @@ make ground decals
 make parallax decals
     various mushrooms
     figure out underside parallax decoration
+
+#creepy eye decals for lookouts
+do-not-touch mirror for lookous
 
 maybe some kind of decal to indicate spawn locations that fix gravity?
 final climb mirror decals
