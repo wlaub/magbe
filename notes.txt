@@ -1,8 +1,13 @@
-removed some background tiles
-roughing out topside hazards
-recording shroom shapes
+additional hazard roughing
+started on updraft import/cleanup
 
 TODO:
+
+assets:
+crumble blocks
+kevin/derek
+rideable diamond
+
 now:
 
 solve room-spanning decals
@@ -71,46 +76,48 @@ updraft:
 plain spikes
 plain spinners
 
-e-15
-e-16
-e-17
-e-14
-e-13
-e-12
-e-12b
-e-11
-e-09
-e-07
-e-08
-e-fill-4
-x-cc-00
-x-techtest
-e-04l
-b-00b
-b-00a
-b-00
-f-00
-f-01
-c-00
-c-01
-c-01b
-c-01c
-c-02
-c-03
-c-04
-c-05
-c-06
-c-07
-c-08
-c-09
-c-10
-c-11
-c-12
-c-13
-c-14
-c-15
-c-15x
-c-16
+maybe updraft can be all crumbly (at least in the east section)
+
+X    e-15
+X    e-16
+X    e-17
+X    e-14
+X    e-13
+X    e-12
+X    e-12b
+X    e-11
+X    e-09
+X    e-07
+X    e-08
+X    e-fill-4
+X    x-cc-00
+X    x-techtest
+X    e-04l
+X    b-00b
+X    b-00a
+X    b-00
+X    f-00
+X    f-01
+X    c-00
+X    c-01
+X    c-01b
+X    c-01c
+X    c-02
+X    c-03
+X    c-04
+X    c-05
+X    c-06
+X    c-07
+X    c-08
+X    c-09
+X    c-10
+X    c-11
+X    c-12
+X    c-13
+X    c-14
+X    c-15
+X    c-15x
+X    c-16
 
 
 Description:

@@ -3,6 +3,8 @@
   Dependencies:
     - Name: AdamsAddons
       Version: 1.10.1
+    - Name: AurorasHelper
+      Version: 0.12.2
     - Name: ChroniaHelper
       Version: 1.19.14
     - Name: CrystallineHelper
@@ -19,8 +21,12 @@
       Version: 1.50.9
     - Name: GravityHelper
       Version: 1.2.15
+    - Name: LuaCutscenes
+      Version: 0.2.13
     - Name: MaxHelpingHand
       Version: 1.30.6
+    - Name: PandorasBox
+      Version: 1.0.49
     - Name: ShroomHelper
       Version: 1.2.8
     - Name: VivHelper
