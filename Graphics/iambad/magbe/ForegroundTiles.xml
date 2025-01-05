@@ -135,7 +135,7 @@
     <set mask="center" tiles="9,4; 10,4; 9,5; 10,5"/>
   </Tileset>
 	
-  <Tileset id="o" copy="q" path="iambad/waldmo/tamepink" sound="43"/>
+  <Tileset id="o" copy="q" path="iambad/waldmo/magbemix" sound="43"/>
   <Tileset id="O" copy="q" path="iambad/waldmo/backlitplain" sound="43"/>
   <Tileset id="p" copy="q" path="iambad/waldmo/overcastred" sound="43"/>
 

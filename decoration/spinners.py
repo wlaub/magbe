@@ -53,12 +53,13 @@ class Spinner:
 
 
 
-    def __init__(self, x, y, a=0, s=8, N=3, eid=0, layer = 0):
+    def __init__(self, x, y, a=0, s=8, N=3, eid=0, layer = 0, color='ffffff'):
         self.x = x
         self.y = y
         self.a = a
         self.eid = eid
         self.layer = layer
+        self.lonn_color = color
 
         self.N = N
         #0.83 or 1.16
@@ -66,6 +67,21 @@ class Spinner:
         s = 8
         self.s = s
         self.r = s/math.cos(math.pi/N)
+
+        r = int(self.lonn_color[:2], 16)
+        g = int(self.lonn_color[2:4], 16)
+        b = int(self.lonn_color[4:6], 16)
+
+        self.enable = True
+        self.mode = None
+        if b > r and b > g:
+            self.mode = 'tri'
+        elif b> 200 and r>200 and g> 200:
+            self.mode = 'stem'
+        else:
+            self.enable = False
+
+
 
     def save(self):
         return {
@@ -76,12 +92,14 @@ class Spinner:
             'N': self.N,
             'eid': self.eid,
             'layer': self.layer,
+            'color': self.lonn_color,
             }
 
     def neq(self, a):
         return self.x != a.x or self.y != a.y or self.a != a.a or self.s != a.s or self.N != a.N or self.layer != a.layer or self.eid != a.eid
 
     def render(self, target, xoff, yoff, selected):
+        if not self.enable: return
         x = self.x-xoff
         y = self.y-yoff
 
@@ -103,6 +121,10 @@ class Spinner:
 
 
     def render_shape_outline(self, target, xoff, yoff, selected, tracing, scale):
+        if not self.enable: return
+
+        if self.mode != 'tri': return
+
         x = self.x*scale-xoff
         y = self.y*scale-yoff
 
@@ -121,8 +143,11 @@ class Spinner:
 
 
     def render_shape_back(self, target, xoff, yoff, selected, tracing):
+        if not self.enable: return
         if tracing:
             return
+        if self.mode != 'tri': return
+
         x = self.x-xoff
         y = self.y-yoff
 
@@ -141,6 +166,12 @@ class Spinner:
 
 
     def render_shape(self, target, xoff, yoff, selected, layer, tracing):
+        if not self.enable: return
+
+        if self.mode != 'tri':
+            self.render(target, xoff, yoff, selected)
+            return
+
         x = self.x-xoff
         y = self.y-yoff
 
@@ -412,7 +443,7 @@ class EditWindow:
         h_real = h/scale
         target = pygame.Surface((w_real,h_real))
         if self.real_size:
-            target.fill((64,64,64))
+            target.fill((128,128,128))
         else:
             target.fill((64,192,255))
 
@@ -486,6 +517,37 @@ class EditWindow:
         target = pygame.transform.scale_by(target, scale)
 
 
+        #### Grid Render
+        def grid_render(n):
+            gx, gy = self.screen_to_local((x,y))
+            gx = gx-int(gx/n)*n
+            gy = gy-int(gy/n)*n
+
+
+
+            if self.show_grid or self.real_size:
+                if self.real_size:
+                    c = (0,0,0)
+                else:
+                    c = (128,128,128)
+                try:
+                    for i in range (int(w/scale*n)):
+                        pygame.gfxdraw.vline(target,
+                            int(i*scale*n-gx*scale),
+                            0, int(h),
+                            c)
+                except: pass
+                try:
+                    for i in range (int(h/scale*n)):
+                        pygame.gfxdraw.hline(target,
+                            0, int(w),
+                            int(i*scale*n-gy*scale),
+                            c)
+                except: pass
+        grid_render(8)
+
+
+
         xpos *= scale
         ypos *= scale
         if self.real_size:
@@ -504,33 +566,6 @@ class EditWindow:
             pygame.gfxdraw.hline(target, 0, int(w), int(9*8*scale-ypos), (255,255,255))
             pygame.gfxdraw.hline(target, 0, int(w), int(11*8*scale-ypos), (255,255,255))
 
-
-        #### Grid Render
-        gx, gy = self.screen_to_local((x,y))
-        gx = gx-int(gx/8)*8
-        gy = gy-int(gy/8)*8
-
-
-
-        if self.show_grid or self.real_size:
-            if self.real_size:
-                c = (0,0,0)
-            else:
-                c = (128,128,128)
-            try:
-                for i in range (int(w/scale*8)):
-                    pygame.gfxdraw.vline(target,
-                        int(i*scale*8-gx*scale),
-                        0, int(h),
-                        c)
-            except: pass
-            try:
-                for i in range (int(h/scale*8)):
-                    pygame.gfxdraw.hline(target,
-                        0, int(w),
-                        int(i*scale*8-gy*scale),
-                        c)
-            except: pass
 
         screen.blit(target, (x, y))
 

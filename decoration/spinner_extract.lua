@@ -30,8 +30,8 @@ function script.prerun(args)
             if entity._name == "eow/InvisibleSpinner" then
 --                entity.x = entity.x+offset_x
 --                entity.y = entity.y+offset_y
-                io.write(string.format("{\"x\": %f, \"y\": %f, \"eid\": %i},", 
-                    entity.x+room.x, entity.y+room.y, entity._id
+                io.write(string.format("{\"x\": %f, \"y\": %f, \"eid\": %i, \"color\":\"%s\"},", 
+                    entity.x+room.x, entity.y+room.y, entity._id, entity.color
                     ))
             end
 

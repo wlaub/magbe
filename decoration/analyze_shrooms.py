@@ -36,6 +36,21 @@ class Shroom():
         self.widths = tuple(self.widths)
         self.flags = tuple(self.flags)
 
+    def get_base_width(self):
+        for x in self.widths:
+            if x != 0: return x
+
+    def get_top_width(self):
+        return self.widths[-1]
+
+    def get_height(self):
+        return len([x for x in self.widths if x != 0])
+
+    def get_edge_height(self):
+        h = self.get_height()
+        if h > 1: h-=1
+        return h
+
 with open('shrooms.txt', 'r') as fp:
     raw = fp.read()
 
@@ -44,8 +59,10 @@ lines = [x.strip() for x in raw.split('\n') if x.strip() != '']
 rooms = []
 shrooms = []
 distinct_shapes = set()
-normal_gills = set()
-hazard_gills = set()
+normal_gills = defaultdict(lambda: 0)
+hazard_gills = defaultdict(lambda: 0)
+
+spike_counts = defaultdict(lambda: 0)
 
 active_room = None
 for line in lines:
@@ -57,11 +74,16 @@ for line in lines:
         shrooms.append(shroom)
         distinct_shapes.add(shroom.widths)
         if not 'h' in shroom.flags:
-            normal_gills.add(shroom.widths[-1])
+            normal_gills[shroom.get_base_width()] += 1
         else:
-            hazard_gills.add(shroom.widths[-1])
+            hazard_gills[shroom.get_base_width()] += 1
+            spike_counts[shroom.get_edge_height()] += 2
+            spike_counts[shroom.get_top_width()] += 1
+
+hcount = len([x for x in shrooms if 'h' in x.flags])
 
 print(f'{len(shrooms)} total shrooms')
+print(f'{hcount} hazard shrooms')
 print(f'{len(distinct_shapes)} different shapes')
 
 distinct_shapes = list(sorted(distinct_shapes))
@@ -94,8 +116,9 @@ rows = list(sorted(rows, key = lambda x: (x[1], x[2]), reverse=True ))
 
 print(tabulate.tabulate(rows))
 
-print(f'Normal gills: {sorted(normal_gills)}')
-print(f'Hazard gills: {sorted(hazard_gills)}')
+print(f'Normal gills: {sorted(normal_gills.items())}')
+print(f'Hazard gills: {sorted(hazard_gills.items())}')
+print(f'Spikes: {sorted(spike_counts.items())}')
 #for row in rows:
 #    print(row[2])
 

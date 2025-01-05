@@ -1,5 +1,9 @@
-additional hazard roughing
-started on updraft import/cleanup
+main map tileset fixes
+collapsed some ceilings
+
+added underside terrain decals
+better ground tileset
+starting underside hazard decals
 
 TODO:
 
@@ -10,14 +14,25 @@ rideable diamond
 
 now:
 
-solve room-spanning decals
+figure out how to interrupt bird dash tutorial from ending the map
+maybe you can room transition out of it? (probably just doesn't transition but we can try)
+    yep it just doesn't do the room transition
+maybe you can use a remover on the bird like if the cutscene is a child of the bird? might need to add a lua cutscene to restore player control/state?
+maybe you can make like a cutscene cancel trigger that just scans for cutscene objects and removes them, then restores player state and control? that's why hitting f5 cancels the cutscene, right?
 
-finalize underside terrain
-finalize underside mushroom hazards
-add more underside decorative terrain?
 
-figure out terrain colors
+X finalize underside terrain
+X finalize underside mushroom hazards
 
+X figure out terrain colors
+X identify critical and special underside hazard geometries
+
+X new tileset photo with gradient lighting between overside and underside colors
+
+X create rectangular terrain decals
+
+create single-triangle spinner sprites
+create triangle clump hazards
 
 create mushroom caps
     (overside and hazard)
@@ -25,22 +40,62 @@ create mushroom caps
 create mushroom gills
     (overside and hazard)
 
-create mushroom stems
-
-identify critical and special underside hazard geometries
-
 create mushroom spikes
 create mushroom spike stems
 
-create single-triangle spinner sprites
-create triangle clump hazards
+create mushroom stems
 
-create rectangular terrain decals
+hazard decoration
+
+add more underside decorative terrain?
+    (using existing shapes)
+
+global decals
+
+manage transitions
+
+create puzzle mirror assets
+    (maybe even just multiple rectangular mirrors forming a path)
+create kevin, derek, diamond assets
+create crumble block assets
+
+replace vanilla spikes textures
+
+fix switch gate textures
+
+photograph eye for lookouts
+    make the eye look around this the lookout (left-right)
+    left eye for overside, right eye for underside
+
+implement mirror puzzle logic to control switch gate
+    (as in boolean combination of each room's mirror flag presumably in the last room before the ending room)
+
+fix intro bird cutscene
+
+create lore (here!)
+place lore
+
+record music
+suffer (fmod)
+add music sources
+
+move twoteof assets to waldmo
+
+create powerup remover decals
+
+create updraft intro cutscene
+
+finish redecorating updraft
+implement updraft gameplay
+come up with a better placeholder sprite for dyno's
+create burnt everything is fine note asset
+add everything is fine notes to updraft
 
 
-adjust tileset cropping offset to try to improve alignment
-add corner masking to new tilesets
-add tameplain tileset
+create golden berry mirror assets
+
+implement golden berry mirror puzzle
+implement golden berry gameplay
 
 finalize transition blocker lightbeams
 fix transition blocks (use kill player trigger?)
@@ -56,8 +111,14 @@ make parallax decals
     various mushrooms
     figure out underside parallax decoration
 
+adjust tileset cropping offset to try to improve alignment
+add corner masking to new tilesets
+add tameplain tileset
+
 #creepy eye decals for lookouts
 do-not-touch mirror for lookous
+
+
 
 maybe some kind of decal to indicate spawn locations that fix gravity?
 final climb mirror decals
@@ -77,47 +138,6 @@ plain spikes
 plain spinners
 
 maybe updraft can be all crumbly (at least in the east section)
-
-X    e-15
-X    e-16
-X    e-17
-X    e-14
-X    e-13
-X    e-12
-X    e-12b
-X    e-11
-X    e-09
-X    e-07
-X    e-08
-X    e-fill-4
-X    x-cc-00
-X    x-techtest
-X    e-04l
-X    b-00b
-X    b-00a
-X    b-00
-X    f-00
-X    f-01
-X    c-00
-X    c-01
-X    c-01b
-X    c-01c
-X    c-02
-X    c-03
-X    c-04
-X    c-05
-X    c-06
-X    c-07
-X    c-08
-X    c-09
-X    c-10
-X    c-11
-X    c-12
-X    c-13
-X    c-14
-X    c-15
-X    c-15x
-X    c-16
 
 
 Description:
@@ -161,6 +181,17 @@ I was having a hard time coming up with color scheming for this map, and hadn't 
 
 I had similar problems designing the terrain, so I attempted a similar solution. This asset creation technique works really well for large images like the end screens for The Wednesday Machine and The Wednesday On The Edge Of Forever, and doesn't hold up as well for things like tilesets, which can't really represent large visual structures like a gradient across a large piece of terrain. Sprites require a lot of careful manipulation to get the sizes and outlines just right, and they are small relative to the typical sorts of error involved in hand drawing (for me at least, not an artist). Much larger objects minimize that error and are generally faster to extract and manipulate (and they don't have a bunch of tiny parts that need to line up just right like sprites do). 
 
+My original asset digitization process was pretty tedious, and it became apparent that it wouldn't be suitable for the sheet volume of assets I needed to digitize for this. I previously had to do a whole lot of computer work by hand - import the images into the gimp, apply a rough guess lens correction filter to each frame one at a time, apply masks, composite layers, segment sprites, and then export each sprite one at a time by individually enabling each layer and exporting the image because the gimp can't just export every layer as a separate image.
+
+I did a quick google and found discorpy for lens distortion correction. It can calibrate on a dot grid calibration target, so I found the cheapest blueprint printing service I could and printed out a dot grid calibration target. Unfortunately, I didn't really look into discorpy much before doing this and thought it would be suprt clever to leave the middle of the target blank so I could just have it in every image I took all around the actual subject. It turns out, though, that discorpy uses the center of the image for its calibration, and so could not use my target at all. The paper I got printed was larger than my platform, so I had a decent strip of dots left over, and I tried using just the strip as a calibration target instead. The result had a blatantly wrong center of distortion, and I think that minute ripples in the paper (clearly visible when looking edge-on) messed with the calibration. I found that if I just changed the center of distortion to something closer to the center of the image then the resulting parameters still gave better results than I was getting from the gimp with my roughly tuned lens correction filter parameters, so it was still an improvement and more importantly lets me just apply correction to a batch of images automatically without having to do anything but wait (it's kind of slow, but that's fine). Maybe some time in the future I'll try getting another target printed and glue it down flat on my opaque platform, but this should be good enough for now.
+
+Before the whole lens correction thing I'd already written a script to read gimp files, extract the layers, and perform some basic masking, compositing and segmenting operations automatically so that all I had to do in the gimp was define masks and add some layer groups with grid parameters in the name. Determining the grid parameters and typing them into layer names is also pretty tedious though. The exact grid intersections are usually hard to eye-ball, he gimp doesn't provide sub-pixel measurement tools, and I don't know of any way to get a zoomed view of separate corners of the image simultaneously. I would also like to be able to pre-crop my images when I apply lens correction, and that cropping box is going to depend on where exactly the paper winds up relative to the camera.
+
+So naturally the next thing to do was to write a little pygame ui measure those things. It takes a grid reference image and applies the lens correction, then you draw a rectangle to define a rought crop area, and a slightly smaller one to define a reference area for grid alignment. In the next step it just renders a 3x3 grid of small boxes from the corners, sides, and center of the alignment area with a high zoom level and provides adjustable lines across the whole page. At such a high zoom level (and with suitable contrast manipulation), it's pretty straight forward to align those thing rendered lines with the centers of the grid lines on the paper. Once you've got that you can automatically compute the grid size, grid offset, and scaling factor that you need to extract and scale sprites from the final composited image. As a bonus you also get a measure of the minute residual rotation between the page and the camera, which can also be automatically corrected.
+
+These tools are on github - https://github.com/wlaub/morph
+
+This also gives me something to do while letting the meat recover from drawing assets so that I don't break my neck all the way off. Even without automatic lens correction and grid alignment the digitization process is generally faster than the drawing process.
 
 An unfortunate side effect of this being a Verge map is that it means I can't really use the Vergeblock mechanic anywhere except a straight line through the middle of the block, which really limits the things I can do with it. That and I'm also incapable of having ideas. I wind up spending a lot of time on just one side of the verge block with a few short segments of verge gameplay in between for most of the map. Part of this is because I actually don't like a lot of gravity helper gameplay, and in particular I don't like doing tech with frequent gravity swaps. I think that the verge block provides a nice buffer for switching modes while you move through it, but I still didn't want it to become an obstacle to progression. I feel like I should have more of a verge focus in the map, but I also don't really want to have more than one sequence the length of the final verge room (which I made before starting this map just to play around with the idea). Unfortunately, I kind of feel like a lot of the map is effectively filler. I don't think there's anything wrong with filler gameplay if it has something else going on like some interesting visual/geographic theme or other narrative relevance. The problem is that sort of thing is where I have ideas the least. The best I can do is "i dunno some kind of like trees plants mushrooms roots?". I was sort of trying to avoid using entities other than the verge block (though I still dropped a few springs around by accident), which I think makes the non-verge gameplay feel kind of empty. At a certain point it's just wavedash wavedash wallbounce yawn. I really like spinner mazes, but when you wrap the intended routes in spinners and trigger spikes, you run the risk of making something that is maybe fun to play but also just thematically very boring. So to try to compensate, I designed each room with a particular route in mind, but I didn't shrink wrap it in hazards. You don't have to do the whote route in one shot without breaks if you don't want. You can skip a lot of tech if you want. I don't think the designed routes are readily apparent a lot of the time (not counting the mirror routes), and I hope that will yield some interest as it forces the player to engage with the space a little bit more. Since most of the map is very easy to progress through, I think there's a good chance a lot of players will just breeze safely and quickly through most of the game like it's just connective tissue, which will hopefully make the interesting parts stand out more. At the same time if you want to look for more difficult or more interesting routes, the option is there. I'm basically doing the same thing I did in The Wednesday On The Edge Of Forever - compensating for my lack of creativity by trying to provide an adequate space for players to fill with their own better ideas.
 
