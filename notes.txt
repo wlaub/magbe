@@ -1,9 +1,6 @@
-main map tileset fixes
-collapsed some ceilings
-
-added underside terrain decals
-better ground tileset
-starting underside hazard decals
+decal counting script
+a-05 underside hazard decoration
+a-05-b transition management
 
 TODO:
 
@@ -20,19 +17,13 @@ maybe you can room transition out of it? (probably just doesn't transition but w
 maybe you can use a remover on the bird like if the cutscene is a child of the bird? might need to add a lua cutscene to restore player control/state?
 maybe you can make like a cutscene cancel trigger that just scans for cutscene objects and removes them, then restores player state and control? that's why hitting f5 cancels the cutscene, right?
 
+X move twoteof assets to waldmo
 
-X finalize underside terrain
-X finalize underside mushroom hazards
+X create single-triangle spinner sprites
+X create triangle clump hazards
 
-X figure out terrain colors
-X identify critical and special underside hazard geometries
-
-X new tileset photo with gradient lighting between overside and underside colors
-
-X create rectangular terrain decals
-
-create single-triangle spinner sprites
-create triangle clump hazards
+lonnsprite to update decal layers by path
+hazard decals to layer -1000 if 0
 
 create mushroom caps
     (overside and hazard)
@@ -78,8 +69,6 @@ place lore
 record music
 suffer (fmod)
 add music sources
-
-move twoteof assets to waldmo
 
 create powerup remover decals
 
