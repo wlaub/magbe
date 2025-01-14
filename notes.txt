@@ -1,6 +1,3 @@
-decal counting script
-a-05 underside hazard decoration
-a-05-b transition management
 
 TODO:
 
@@ -32,9 +29,13 @@ create mushroom gills
     (overside and hazard)
 
 create mushroom spikes
-create mushroom spike stems
+
+create mushroom hazard stems
+
+create a-06 trispinner sheet
 
 create mushroom stems
+rotate them at angles to pack them more densely on the page, label heights and group letters
 
 hazard decoration
 
@@ -66,7 +67,24 @@ fix intro bird cutscene
 create lore (here!)
 place lore
 
-record music
+record music:
+record different drones for each of something like:
+*7 triangle spinners
+*7 rect terrain
+*7 mushroom terrain
+*7 mushroom spikes
+*5 places where you go through the middle
+*7 pink refills 
+*1 lookouts
+*1 mirrors
+*1 fire hydrants
+*3 here!
+*1 the intro car
+=47 layers
+some tracks should be sparse so that you're unlikely to hear them e.g. the intro car, fire hydrants, here!, mirrors, lookouts
+can you modulate music playback speed as a parameter or something and use it to make different chords in different rooms?
+
+
 suffer (fmod)
 add music sources
 
