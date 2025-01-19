@@ -19,6 +19,10 @@ X move twoteof assets to waldmo
 X create single-triangle spinner sprites
 X create triangle clump hazards
 
+maybe have some mostly transparent colored grid "clouds" drifting around in the background as a sort of fog to obscure background decals.
+
+make underside bg decoration decals more blue
+
 lonnsprite to update decal layers by path
 hazard decals to layer -1000 if 0
 
