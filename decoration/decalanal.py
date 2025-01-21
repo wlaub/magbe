@@ -32,6 +32,16 @@ class Decal():
 
             return int(name.split('.')[2])
 
+        if 'iambad/magbe/stem/' in self.path:
+            if name[0] == 'h': return None
+
+            try:
+                return int(name.split('.')[3])
+            except:
+                return None
+
+
+
         if 'iambad/magbe/tri/s' in self.path and name[0]=='s':
             parts = name[1:].split('.')
             return int(parts[0])%2*3+int(parts[1])
@@ -55,7 +65,8 @@ class DecalMachine():
             try:
                 self.decals.append(Decal(line))
             except Exception as e:
-                print(f'Failed on {line} with {e}')
+#                print(f'Failed on {line} with {e}')
+                pass
 
     def get_global_counts(self, filter_text):
         counts = defaultdict(lambda: 0)

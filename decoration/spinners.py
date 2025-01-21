@@ -253,6 +253,9 @@ class EditWindow:
         self.fg_image_layers = {}
         self.bg_image_layers = {}
 
+        self.marks = []
+        self.mark_active = None
+
     def get_scale(self):
         if self.real_size:
             return self.window_scale
@@ -265,6 +268,7 @@ class EditWindow:
                 'pos': self.view.pos,
                 'scale': self.view.scale,
                 },
+            'marks': self.marks,
             }
 #        for spinner in self.spinners:
 #            result['spinners'].append(spinner.save())
@@ -299,6 +303,8 @@ class EditWindow:
 
         self.view.pos = data['view']['pos']
         self.view.scale = data['view']['scale']
+
+        self.marks = data.get('marks', [])
 
         self.dirty = False
         self.loaded_filename = filename
@@ -352,6 +358,16 @@ class EditWindow:
                 self.dirty = True
                 return
 
+        old_marks = data.get('marks', [])
+
+        if len(self.marks) != len(old_marks):
+            self.dirty = True
+            return
+
+        for m in self.marks:
+            if not m in old_marks:
+                self.dirty = True
+                return
 
         self.dirty = False
 
@@ -387,6 +403,44 @@ class EditWindow:
         x,y,w,h = self.area
         return not( pos[0] < x or pos[0] > x+w or pos[1] < y or pos[1] > y+h)
 
+
+    def delete_mark(self):
+        if self.mark_active is None:
+            return
+
+        self.marks.remove(self.mark_active)
+        self.dirty=True
+
+    def start_mark(self, xpos, ypos):
+        if self.mark_active is not None:
+            return
+        xpos, ypos = self.screen_to_local((xpos, ypos))
+
+        for mark in self.marks:
+            x,y = mark
+            dist = (x-xpos)**2 + (y-ypos)**2
+            if dist < 64:
+                self.mark_active = mark
+                return
+
+        self.mark_active = [xpos, ypos]
+        self.marks.append(self.mark_active)
+
+    def stop_mark(self, xpos, ypos):
+        if self.mark_active is None:
+            return
+        xpos, ypos = self.screen_to_local((xpos, ypos))
+        self.mark_active[0] = xpos
+        self.mark_active[1] = ypos
+        self.mark_active = None
+
+    def update_mark(self, xpos, ypos):
+        if self.mark_active is None:
+            return
+
+        xpos, ypos = self.screen_to_local((xpos, ypos))
+        self.mark_active[0] = xpos
+        self.mark_active[1] = ypos
 
     def inc_selection_layer(self, amt):
         if self.selection is None:
@@ -566,6 +620,20 @@ class EditWindow:
             pygame.gfxdraw.hline(target, 0, int(w), int(9*8*scale-ypos), (255,255,255))
             pygame.gfxdraw.hline(target, 0, int(w), int(11*8*scale-ypos), (255,255,255))
 
+        for mark in self.marks:
+            color = (255,255,0)
+            if mark is self.mark_active:
+                color= (255,0,255)
+
+            r = 4*scale
+            mx = round(mark[0]*scale - xpos)
+            my = round(mark[1]*scale - ypos)
+            pygame.gfxdraw.aacircle(target, mx, my, round(r), color)
+            r = round(r*0.707)
+            pygame.gfxdraw.line(target, mx-r, my-r, mx+r, my+r, color)
+            pygame.gfxdraw.line(target, mx+r, my-r, mx-r, my+r, color)
+
+
 
         screen.blit(target, (x, y))
 
@@ -711,6 +779,8 @@ while True:
         elif event.type == KEYDOWN:
             if event.key in layer_toggle_map.keys():
                 button_map[layer_toggle_map[event.key]].toggle()
+            elif event.key == K_DELETE:
+                edit_window.delete_mark()
             elif event.key == K_BACKQUOTE:
                 for k in fg_image_layers.keys():
                     button_map[k].toggle()
@@ -752,6 +822,7 @@ while True:
                 edit_window.view.start(*mpos)
                 pass
             elif event.button == RMB:
+                edit_window.start_mark(*mpos)
                 pass
         elif event.type == MOUSEBUTTONUP:
             if event.button == LMB:
@@ -760,6 +831,7 @@ while True:
                 edit_window.view.stop()
                 pass
             elif event.button == RMB:
+                edit_window.stop_mark(*mpos)
                 edit_window.dirty_check()
                 pass
         elif event.type == MOUSEWHEEL:
@@ -767,6 +839,8 @@ while True:
             if edit_window.view.scale < 1:
                 edit_window.view.scale = 1
             pass
+
+    edit_window.update_mark(*mpos)
 
     mouse_state = [0, *pygame.mouse.get_pressed()]
 
