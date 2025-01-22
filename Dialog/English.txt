@@ -1,5 +1,5 @@
-iambad_magbe= MIRRORS (a game by) EDGE
-iambad_magbe_1_ch1= Edge
+iambad_magbe= EDGE™ (a game by) MIRRORS
+iambad_magbe_1_ch1= EDGE™
 iambad_magbe_1_ch1_author= iambadatvideogamesdotcom
 
 
