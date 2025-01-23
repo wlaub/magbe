@@ -21,6 +21,8 @@ X create triangle clump hazards
 
 maybe have some mostly transparent colored grid "clouds" drifting around in the background as a sort of fog to obscure background decals.
 
+make a sheet of thorn balls for isolated spinners on overside
+
 make underside bg decoration decals more blue
 
 lonnsprite to update decal layers by path
