@@ -256,9 +256,11 @@ class EditWindow:
         self.marks = []
         self.mark_active = None
 
+        self.tiles_per_grid = 1
+
     def get_scale(self):
         if self.real_size:
-            return self.window_scale
+            return self.window_scale/self.tiles_per_grid
         return self.view.scale
 
     def save(self, filename):
@@ -488,10 +490,13 @@ class EditWindow:
 
 #        self.dirty_check()
 
-    def render(self, screen, button_map):
+    def render(self, screen, button_map, rotated, tiles_per_grid):
         x,y,w,h = self.area
         xpos, ypos = self.view.get_pos()
         scale = self.get_scale()
+
+        if rotated:
+            x,y,h,w = self.area
 
         w_real = w/scale
         h_real = h/scale
@@ -634,6 +639,8 @@ class EditWindow:
             pygame.gfxdraw.line(target, mx+r, my-r, mx-r, my+r, color)
 
 
+        if rotated:
+            target = pygame.transform.rotate(target, 90)
 
         screen.blit(target, (x, y))
 
@@ -743,6 +750,9 @@ layer_toggle_map = {
     K_4: 'verge',
 }
 
+rotated = False
+tiles_per_grid = 1
+
 while True:
     start_time = time.time()
 
@@ -786,7 +796,10 @@ while True:
                     button_map[k].toggle()
                 for k in bg_image_layers.keys():
                     button_map[k].toggle()
-
+            elif event.key == K_r:
+                rotated = not rotated
+            elif event.key == K_SPACE:
+                edit_window.tiles_per_grid = 3-edit_window.tiles_per_grid
             elif event.key == K_s:
                 edit_window.save(OUTFILE)
             elif event.key == K_F5:
@@ -853,7 +866,7 @@ while True:
 #        edit_window.set_drag( -(mpos[0]-down_pos[RMB][0]), -(mpos[1]-down_pos[RMB][1]))
 
 
-    edit_window.render(screen, button_map)
+    edit_window.render(screen, button_map, rotated, tiles_per_grid)
 
     for button in buttons:
         button.render(screen)

@@ -1,3 +1,5 @@
+underside hazards in a-06/b
+spikes in a-03b
 
 TODO:
 
@@ -22,6 +24,8 @@ X create triangle clump hazards
 maybe have some mostly transparent colored grid "clouds" drifting around in the background as a sort of fog to obscure background decals.
 
 make a sheet of thorn balls for isolated spinners on overside
+missing 7-hazard gills
+
 
 make underside bg decoration decals more blue
 

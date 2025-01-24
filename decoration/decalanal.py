@@ -22,6 +22,37 @@ class Decal():
         self.path = parts[1]
         self.room = ' '.join(parts[2:])
 
+    def get_key(self):
+
+        name = self.path.split('/')[-1]
+        base = '/'.join(self.path.split('/')[:-1])
+
+        if 'iambad/magbe/mush/' in self.path:
+            parts = name.split('.')
+            parts.pop(2)
+            name = '.'.join(parts)
+        elif 'iambad/magbe/gill/' in self.path:
+            if name[0] != 'h':
+                parts = name.split('.')
+                parts.pop(2)
+                name = '.'.join(parts)
+        elif 'iambad/magbe/stem/' in self.path:
+            if name[0] != 'h':
+                try:
+                    parts = name.split('.')
+                    parts.pop(3)
+                    name = '.'.join(parts)
+                except:
+                    pass
+#        elif 'iambad/magbe/tri/s' in self.path and name[0]=='s':
+#            parts = name[1:].split('.')
+#            return int(parts[0])%2*3+int(parts[1])
+#            return (int(parts[0])%2)*3#+int(parts[1])
+
+        return base+'/'+name
+
+
+
     def get_color(self):
         name = self.path.split('/')[-1]
         if 'iambad/magbe/mush/' in self.path:
@@ -70,15 +101,20 @@ class DecalMachine():
 
     def get_global_counts(self, filter_text):
         counts = defaultdict(lambda: 0)
+        room_counts = defaultdict(lambda: 0)
 
         if filter_text is None:
             filter_text = self.filter_buffer.document.text
+        room_name = self.room_buffer.document.text
 
         for decal in self.decals:
-            if decal.path.startswith(filter_text):
-                counts[decal.path[len(filter_text):]] += 1
+            path = decal.get_key()
+            if path.startswith(filter_text):
+                counts[path[len(filter_text):]] += 1
+                if decal.room == room_name:
+                    room_counts[path[len(filter_text):]] += 1
 
-        return self.format_counts(counts)
+        return self.format_counts(counts, room_counts)
 
     def get_room_counts(self, filter_text, room_name):
         counts = defaultdict(lambda: 0)
@@ -89,14 +125,19 @@ class DecalMachine():
             room_name = self.room_buffer.document.text
 
         for decal in self.decals:
+            path = decal.get_key()
             if decal.room == room_name and decal.path.startswith(filter_text):
                 counts[decal.path[len(filter_text):]] += 1
 
         return self.format_counts(counts)
 
-    def format_counts(self, counts):
+    def format_counts(self, counts, room_counts = None):
 
-        rows = [(v, k) for k,v in counts.items()]
+        if room_counts is None:
+            rows = [(v, k) for k,v in counts.items()]
+        else:
+            rows = [(v, room_counts[k], k) for k,v in counts.items()]
+
         rows = sorted(rows)
         return tabulate.tabulate(rows, tablefmt='plain')
 
@@ -182,7 +223,7 @@ room_color_counts = FormattedTextControl()
 
 
 filter_buffer = Buffer(on_text_changed=update_lists, multiline=False)
-room_buffer = Buffer(on_text_changed=update_room_list, multiline=False)
+room_buffer = Buffer(on_text_changed=update_lists, multiline=False)
 
 dm.filter_buffer = filter_buffer
 dm.room_buffer = room_buffer
