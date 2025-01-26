@@ -146,6 +146,7 @@ class DecalMachine():
         counts = defaultdict(lambda: 0)
 
         filter_text = self.filter_buffer.document.text
+        filter_text = '/'.join(filter_text.split('/')[:-1])
         for decal in self.decals:
             if decal.path.startswith(filter_text):
                 color = decal.get_color()
@@ -160,7 +161,7 @@ class DecalMachine():
 
         filter_text = self.filter_buffer.document.text
         room_name = self.room_buffer.document.text
-
+        filter_text = '/'.join(filter_text.split('/')[:-1])
         for decal in self.decals:
             if decal.room == room_name and decal.path.startswith(filter_text):
                 color = decal.get_color()
