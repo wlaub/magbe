@@ -25,6 +25,8 @@ maybe have some mostly transparent colored grid "clouds" drifting around in the 
 
 make a sheet of thorn balls for isolated spinners on overside
 missing 7-hazard gills
+missing 15-tile, 12-tile hazard gills
+missing 00003, 00084, 00072
 
 
 make underside bg decoration decals more blue
