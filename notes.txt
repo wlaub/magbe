@@ -21,40 +21,47 @@ X move twoteof assets to waldmo
 X create single-triangle spinner sprites
 X create triangle clump hazards
 
-maybe have some mostly transparent colored grid "clouds" drifting around in the background as a sort of fog to obscure background decals.
+X create mushroom caps
+X     (overside and hazard)
+
+X create mushroom gills
+X     (overside and hazard)
+
+X create mushroom spikes
+
+X create mushroom hazard stems
+
+X create a-06 trispinner sheet
 
 make a sheet of thorn balls for isolated spinners on overside
-missing 7-hazard gills
-missing 15-tile, 12-tile hazard gills
-missing 00003, 00084, 00072
-
-
-make underside bg decoration decals more blue
-
-lonnsprite to update decal layers by path
-hazard decals to layer -1000 if 0
-
-create mushroom caps
-    (overside and hazard)
-
-create mushroom gills
-    (overside and hazard)
-
-create mushroom spikes
-
-create mushroom hazard stems
-
-create a-06 trispinner sheet
+missing 7-hazard (4) gills
+missing 15-tile (1), 12-tile (1) hazard gills
+missing 00003 (3), 00084 (1), 00072 (1), 00031 (1), h00062 (1)
 
 create mushroom stems
 rotate them at angles to pack them more densely on the page, label heights and group letters
 
 hazard decoration
 
-add more underside decorative terrain?
-    (using existing shapes)
+lonnsprite to update decal layers by path
+hazard decals to layer -1000 if 0
+
+tune up background parallax colors
+
+make underside bg decoration decals 
+    * more blue
+
+make overside bg decoration decals
+    * more red
+
+make small ground shrooms for overside ground
+make small hex? patterns for underside ground
+
+maybe have some mostly transparent colored grid "clouds" drifting around in the background as a sort of fog to obscure background decals.
 
 global decals
+decal dashblock/fakewall
+cutscene interrupt trigger
 
 manage transitions
 
@@ -96,7 +103,6 @@ record different drones for each of something like:
 some tracks should be sparse so that you're unlikely to hear them e.g. the intro car, fire hydrants, here!, mirrors, lookouts
 can you modulate music playback speed as a parameter or something and use it to make different chords in different rooms?
 
-
 suffer (fmod)
 add music sources
 
@@ -121,23 +127,12 @@ fix transition blocks (use kill player trigger?)
 
 figure out dr room placement
 
-
-make ground decals
-    small mushrooms
-    figure out underside ground decoration
-
-make parallax decals
-    various mushrooms
-    figure out underside parallax decoration
-
 adjust tileset cropping offset to try to improve alignment
 add corner masking to new tilesets
 add tameplain tileset
 
 #creepy eye decals for lookouts
 do-not-touch mirror for lookous
-
-
 
 maybe some kind of decal to indicate spawn locations that fix gravity?
 final climb mirror decals
@@ -221,4 +216,4 @@ The game was technically proficient - I had no issues with the mechanics or the 
 
 There is one thing in particular, though, that stands out to me. I loved it then, and I loved it now. You're flying around the surface of -hoth- the moon, you find a way underground, and suddenly realize that *you've been here before* - it's the remains of the first level of Descent 1. I love that sort of thing. I loved it when Dark Souls 3 did it too. Hmmmmm. Do you suppose Half-life 3 would have revisited Black Mesa?
 
-
+Anyway, never gonna do that again.
