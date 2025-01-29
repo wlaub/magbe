@@ -1,5 +1,5 @@
-underside hazards in a-06/b
-spikes in a-03b
+remove a-03 to a-03b refill route
+some important blockage in a-04b
 
 TODO:
 
@@ -33,10 +33,22 @@ X create mushroom hazard stems
 
 X create a-06 trispinner sheet
 
+can you detect whether eow is a dependency and skip scanning the map, loading hooks if it's not?
+
+for thorn balls, make the colors be different non-orthogonal rotations with different color mask indices. Something like 3 angles per instance and then 7 unique balls = 21 different decals
+    one room likely has a lot of these
+    each one is going to be pretty big though due to animated
+    the hazard stems are just 10 MB for 42 sprites, and they are very large.
+    it's still a lot of files
+    but 7*5 = 35
+    there are like 49 in a room at most
+    7 rotations stretches the bounds of decency, but is thematically appealing
+    
+
 make a sheet of thorn balls for isolated spinners on overside
-missing 7-hazard (4) gills
+missing 7-hazard (5) gills
 missing 15-tile (1), 12-tile (1) hazard gills
-missing 00003 (3), 00084 (1), 00072 (1), 00031 (1), h00062 (1)
+missing 00003 (3), 00084 (1), 00072 (1), 00031 (1), h00062 (1), h00033 (1)
 
 create mushroom stems
 rotate them at angles to pack them more densely on the page, label heights and group letters
