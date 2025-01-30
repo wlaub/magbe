@@ -50,6 +50,9 @@ missing 7-hazard (5) gills
 missing 15-tile (1), 12-tile (1) hazard gills
 missing 00003 (3), 00084 (1), 00072 (1), 00031 (1), h00062 (1), h00033 (1)
 
+okay so for the trigger spikes what you'll have to do take a couple of 2-tile spike decals and then also build a 3-tile decal, and name them as the directions they'll face and use chroniahelper animated spikes for them.
+for now i'll just place decals
+
 create mushroom stems
 rotate them at angles to pack them more densely on the page, label heights and group letters
 
