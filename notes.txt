@@ -1,5 +1,3 @@
-remove a-03 to a-03b refill route
-some important blockage in a-04b
 
 TODO:
 
@@ -46,7 +44,7 @@ for thorn balls, make the colors be different non-orthogonal rotations with diff
     
 
 make a sheet of thorn balls for isolated spinners on overside
-missing 7-hazard (5) gills
+missing 7-hazard (8) gills
 missing 15-tile (1), 12-tile (1) hazard gills
 missing 00003 (3), 00084 (1), 00072 (1), 00031 (1), h00062 (1), h00033 (1)
 
@@ -100,6 +98,8 @@ fix intro bird cutscene
 
 create lore (here!)
 place lore
+
+"it's wednesday somewhere else"
 
 record music:
 record different drones for each of something like:
