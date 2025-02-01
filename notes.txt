@@ -44,7 +44,7 @@ for thorn balls, make the colors be different non-orthogonal rotations with diff
     
 
 make a sheet of thorn balls for isolated spinners on overside
-missing 7-hazard (8) gills
+missing 7-hazard (11) gills
 missing 15-tile (1), 12-tile (1) hazard gills
 missing 00003 (3), 00084 (1), 00072 (1), 00031 (1), h00062 (1), h00033 (1)
 
@@ -126,6 +126,11 @@ create powerup remover decals
 create updraft intro cutscene
 
 finish redecorating updraft
+maybe: destroy most of the terrain and shift further left, lots of crumble on touch blocks, crumble dynos, might need to reduce dream blocks. it's okay if the connection to twoteof is obscured, even desirabe early in the area.
+the transition from main map can just be that you can only reach the top of the room on the right, but after that you're free to dash up and down the transition all you want. - might require some adjustment to make the room taller and to reach a higher jump refill
+maybe most of the dream blocks are exposed but you can't dash into the ends of them so you can't travel inside them - only orthogonal and diagonal dashes
+make permanent trigger that when you go through it makes like crumbled blocks permanent in a room? so you can have reusable crumble blocks that become permanent once you clear the room out the other side, and then you'd better have left some behind for the downclimb.
+
 implement updraft gameplay
 come up with a better placeholder sprite for dyno's
 create burnt everything is fine note asset
