@@ -1,3 +1,7 @@
+added missing hazard gills
+moved teaser room, removed teaser dependencies
+thorn balls in a-04b, a-05
+cosmetic trispinner decoartion in a-04b, a-04, a-05
 
 TODO:
 
@@ -43,9 +47,10 @@ for thorn balls, make the colors be different non-orthogonal rotations with diff
     7 rotations stretches the bounds of decency, but is thematically appealing
     
 
-make a sheet of thorn balls for isolated spinners on overside
-missing 7-hazard (11) gills
-missing 15-tile (1), 12-tile (1) hazard gills
+X make a sheet of thorn balls for isolated spinners on overside
+X missing 7-hazard (11) gills
+X missing 15-tile (1), 12-tile (1) hazard gills
+static needle spikes for trigger spikes
 missing 00003 (3), 00084 (1), 00072 (1), 00031 (1), h00062 (1), h00033 (1)
 
 okay so for the trigger spikes what you'll have to do take a couple of 2-tile spike decals and then also build a 3-tile decal, and name them as the directions they'll face and use chroniahelper animated spikes for them.

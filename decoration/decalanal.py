@@ -44,6 +44,10 @@ class Decal():
                     name = '.'.join(parts)
                 except:
                     pass
+#        elif 'iambad/magbe/ball/' in self.path:
+#            parts = name.split('.')
+#            parts.pop(2)
+#            name = '.'.join(parts)
 #        elif 'iambad/magbe/tri/s' in self.path and name[0]=='s':
 #            parts = name[1:].split('.')
 #            return int(parts[0])%2*3+int(parts[1])
@@ -71,7 +75,8 @@ class Decal():
             except:
                 return None
 
-
+        if 'iambad/magbe/ball/' in self.path:
+            return int(name.split('.')[2])
 
         if 'iambad/magbe/tri/s' in self.path and name[0]=='s':
             parts = name[1:].split('.')
