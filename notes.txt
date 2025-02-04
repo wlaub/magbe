@@ -1,7 +1,4 @@
-added missing hazard gills
-moved teaser room, removed teaser dependencies
-thorn balls in a-04b, a-05
-cosmetic trispinner decoartion in a-04b, a-04, a-05
+a-05b spikes, gills, balls, triangles
 
 TODO:
 
@@ -18,26 +15,9 @@ maybe you can room transition out of it? (probably just doesn't transition but w
 maybe you can use a remover on the bird like if the cutscene is a child of the bird? might need to add a lua cutscene to restore player control/state?
 maybe you can make like a cutscene cancel trigger that just scans for cutscene objects and removes them, then restores player state and control? that's why hitting f5 cancels the cutscene, right?
 
-X move twoteof assets to waldmo
-
-X create single-triangle spinner sprites
-X create triangle clump hazards
-
-X create mushroom caps
-X     (overside and hazard)
-
-X create mushroom gills
-X     (overside and hazard)
-
-X create mushroom spikes
-
-X create mushroom hazard stems
-
-X create a-06 trispinner sheet
-
 can you detect whether eow is a dependency and skip scanning the map, loading hooks if it's not?
 
-for thorn balls, make the colors be different non-orthogonal rotations with different color mask indices. Something like 3 angles per instance and then 7 unique balls = 21 different decals
+X for thorn balls, make the colors be different non-orthogonal rotations with different color mask indices. Something like 3 angles per instance and then 7 unique balls = 21 different decals
     one room likely has a lot of these
     each one is going to be pretty big though due to animated
     the hazard stems are just 10 MB for 42 sprites, and they are very large.
@@ -50,14 +30,13 @@ for thorn balls, make the colors be different non-orthogonal rotations with diff
 X make a sheet of thorn balls for isolated spinners on overside
 X missing 7-hazard (11) gills
 X missing 15-tile (1), 12-tile (1) hazard gills
-static needle spikes for trigger spikes
-missing 00003 (3), 00084 (1), 00072 (1), 00031 (1), h00062 (1), h00033 (1)
 
-okay so for the trigger spikes what you'll have to do take a couple of 2-tile spike decals and then also build a 3-tile decal, and name them as the directions they'll face and use chroniahelper animated spikes for them.
-for now i'll just place decals
+X static needle spikes for trigger spikes
+X also do some ground shrooms here
+X missing 00003 (3), 00084 (1), 00072 (1), 00031 (1), h00062 (1), h00033 (1)
 
-create mushroom stems
-rotate them at angles to pack them more densely on the page, label heights and group letters
+X okay so for the trigger spikes what you'll have to do take a couple of 2-tile spike decals and then also build a 3-tile decal, and name them as the directions they'll face and use chroniahelper animated spikes for them.
+X for now i'll just place decals
 
 hazard decoration
 
