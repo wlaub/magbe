@@ -1,4 +1,8 @@
-a-05b spikes, gills, balls, triangles
+remaining clutter hazards
+a-06 gills, spikes
+placed missing terrain decals
+fixed up trigger spike assets
+tweaked diamond rider access a lot
 
 TODO:
 
@@ -6,6 +10,7 @@ assets:
 crumble blocks
 kevin/derek
 rideable diamond
+something for dynos
 
 now:
 
@@ -17,26 +22,12 @@ maybe you can make like a cutscene cancel trigger that just scans for cutscene o
 
 can you detect whether eow is a dependency and skip scanning the map, loading hooks if it's not?
 
-X for thorn balls, make the colors be different non-orthogonal rotations with different color mask indices. Something like 3 angles per instance and then 7 unique balls = 21 different decals
-    one room likely has a lot of these
-    each one is going to be pretty big though due to animated
-    the hazard stems are just 10 MB for 42 sprites, and they are very large.
-    it's still a lot of files
-    but 7*5 = 35
-    there are like 49 in a room at most
-    7 rotations stretches the bounds of decency, but is thematically appealing
-    
+maybe non-transition borders can have like a solid black (with alpha edges) torn hole decal that makes it look like there's a hole torn in the parallax styleground?
 
-X make a sheet of thorn balls for isolated spinners on overside
-X missing 7-hazard (11) gills
-X missing 15-tile (1), 12-tile (1) hazard gills
+X digitize and place missing decals
+X last bits of clutter in a-02 and a-03b
 
-X static needle spikes for trigger spikes
-X also do some ground shrooms here
-X missing 00003 (3), 00084 (1), 00072 (1), 00031 (1), h00062 (1), h00033 (1)
-
-X okay so for the trigger spikes what you'll have to do take a couple of 2-tile spike decals and then also build a 3-tile decal, and name them as the directions they'll face and use chroniahelper animated spikes for them.
-X for now i'll just place decals
+final climb gills
 
 hazard decoration
 
