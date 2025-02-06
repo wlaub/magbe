@@ -1,8 +1,4 @@
-remaining clutter hazards
-a-06 gills, spikes
-placed missing terrain decals
-fixed up trigger spike assets
-tweaked diamond rider access a lot
+final climb gills
 
 TODO:
 
@@ -24,10 +20,7 @@ can you detect whether eow is a dependency and skip scanning the map, loading ho
 
 maybe non-transition borders can have like a solid black (with alpha edges) torn hole decal that makes it look like there's a hole torn in the parallax styleground?
 
-X digitize and place missing decals
-X last bits of clutter in a-02 and a-03b
-
-final climb gills
+X final climb gills
 
 hazard decoration
 
