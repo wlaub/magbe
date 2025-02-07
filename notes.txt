@@ -1,4 +1,6 @@
-final climb gills
+global decal test
+decal layer correction script
+set rough decal layers
 
 TODO:
 
@@ -19,8 +21,6 @@ maybe you can make like a cutscene cancel trigger that just scans for cutscene o
 can you detect whether eow is a dependency and skip scanning the map, loading hooks if it's not?
 
 maybe non-transition borders can have like a solid black (with alpha edges) torn hole decal that makes it look like there's a hole torn in the parallax styleground?
-
-X final climb gills
 
 hazard decoration
 
