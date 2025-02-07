@@ -36,6 +36,38 @@ function dump(o)
 end
 
 
+function do_it(room, entity)
+    local sprite = item.texture
+    sprite = string.sub(sprite, 8)
+
+    local tidx
+    for idx = 0, string.len(sprite) do
+        eidx = string.len(sprite)-idx
+        tidx = idx
+        char = string.byte(string.sub(sprite, eidx, eidx)) -- i am going to throw up
+        if char < 0x30 or char > 0x39 then
+            break
+        end
+    end
+    sprite = string.sub(sprite, 0, -tidx-1)
+
+
+    local itemTemplate = {
+        _name = "eow/GlobalDecal",
+        sprite = sprite,
+        x = item.x,
+        y = item.y,
+        scaleX = item.scaleX,
+        scaleY = item.scaleY,
+        rotation = item.rotation,
+        color = item.color,
+        depth = item.depth,
+        flag = "",
+        }
+
+    pu.placeItem(room, 'entities', itemTemplate)
+end
+
 function script.run(room, args)
 
     selection = selection_tool.getSelectionTargets() 
@@ -43,39 +75,13 @@ function script.run(room, args)
         if entity.layer == "decalsBg" then
             item = entity.item
             if item.depth == nil then
+                item.depth = 9000
+            end
+        elseif entity.layer == "decalsFg" then
+            item = entity.item
+            if item.depth == nil then
                 item.depth = -10501
             end
-
-            local sprite = item.texture
-            sprite = string.sub(sprite, 8)
-
-            local tidx
-            for idx = 0, string.len(sprite) do
-                eidx = string.len(sprite)-idx
-                tidx = idx
-                char = string.byte(string.sub(sprite, eidx, eidx)) -- i am going to throw up
-                if char < 0x30 or char > 0x39 then
-                    break
-                end
-            end
-            sprite = string.sub(sprite, 0, -tidx-1)
-
-
-            local itemTemplate = {
-                _name = "eow/GlobalDecal",
-                sprite = sprite,
-                x = item.x,
-                y = item.y,
-                scaleX = item.scaleX,
-                scaleY = item.scaleY,
-                rotation = item.rotation,
-                color = item.color,
-                depth = item.depth,
-                flag = "",
-                }
-
-            pu.placeItem(room, 'entities', itemTemplate)
-
         end
     end
     selection_util.redrawTargetLayers(room, selection)
