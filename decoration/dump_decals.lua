@@ -33,6 +33,11 @@ function script.prerun(args)
         for _,decal in ipairs(room.decalsBg) do
             io.write(string.format("BG %s %s\n",decal.texture, room.name))
         end
+        for _,decal in ipairs(room.entities) do
+            if decal._name == 'eow/GlobalDecal' then
+            io.write(string.format("BG %s %s\n","decals/"..decal.sprite, room.name))
+            end
+        end
     end
 
 end

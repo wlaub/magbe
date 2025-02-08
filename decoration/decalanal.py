@@ -20,6 +20,9 @@ class Decal():
 
         self.layer = parts[0]
         self.path = parts[1]
+        if self.path.endswith('.'):
+            self.path += '00'
+
         self.room = ' '.join(parts[2:])
 
     def get_key(self):

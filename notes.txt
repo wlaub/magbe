@@ -1,6 +1,15 @@
 global decal test
 decal layer correction script
 set rough decal layers
+globalized decals
+added hazard in a-03b
+removed spurious spike from diamond rider access
+removed abomination from decal converter
+some golden work
+various decoration fixes
+make a skip in a-05 harder
+fix a skip in a-04/a-05b
+fix a-06b secret respawn
 
 TODO:
 
@@ -24,8 +33,13 @@ maybe non-transition borders can have like a solid black (with alpha edges) torn
 
 hazard decoration
 
-lonnsprite to update decal layers by path
-hazard decals to layer -1000 if 0
+X lonnsprite to update decal layers by path
+
+indicate spawn changes with golden mirrors that break on contact
+make them possible to go around so that changing spawns disables golden
+need a way to set temp flag on spawn
+
+indicate gravity-safe spawns with some kind of mirror
 
 tune up background parallax colors
 
