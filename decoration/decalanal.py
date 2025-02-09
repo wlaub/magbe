@@ -18,6 +18,9 @@ class Decal():
 
         parts = line.split(' ')
 
+        if 'overlay' in line:
+            raise RuntimeError()
+
         self.layer = parts[0]
         self.path = parts[1]
         if self.path.endswith('.'):
