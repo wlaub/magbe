@@ -1,6 +1,5 @@
-transition blockers and backtrack support
-a-05c dash block stuff
-a-04b missing spikes
+refill bubblers
+final climb state management
 
 TODO:
 
@@ -22,9 +21,15 @@ can you detect whether eow is a dependency and skip scanning the map, loading ho
 
 maybe non-transition borders can have like a solid black (with alpha edges) torn hole decal that makes it look like there's a hole torn in the parallax styleground?
 
-bubbler flag refill
-hook player.userefill
-if intersecting hitbox, do a bubbler and set a flag
+X bubbler flag refill
+X hook player.userefill
+X if intersecting hitbox, do a bubbler and set a flag
+
+X flag intitializer
+X -set flag states on level load
+X -only once option
+
+
 
 hazard decoration
 
@@ -46,15 +51,6 @@ make small ground shrooms for overside ground
 make small hex? patterns for underside ground
 
 maybe have some mostly transparent colored grid "clouds" drifting around in the background as a sort of fog to obscure background decals.
-
-flag intitializer
--set flag states on level load
--only once option
-
-decal dashblock/fakewall
--decal with overlay attribute?
-
-static mover decals to attach spikes to kevins
 
 might need a custom decal property to delay animation based on distance from player?
 i guess you do this by adding a component subclass to the decal that has an update function that does stuff to the decal via (Decal)base.Entity
