@@ -28,7 +28,7 @@ function do_it(texture, decal)
     elseif texture:find('iambad/magbe/stem/h') then
          target_depth=-70
     elseif texture:find('iambad/magbe/stem/') then
-         target_depth=10
+         target_depth=10000
     elseif texture:find('iambad/magbe/spike/') then
          target_depth=-90
     elseif texture:find('iambad/magbe/tri/s') then
