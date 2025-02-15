@@ -1,3 +1,5 @@
+placed final climb mirrors
+fixed up ending stylegrounds
 
 TODO:
 
