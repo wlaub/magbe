@@ -1,5 +1,8 @@
-placed final climb mirrors
-fixed up ending stylegrounds
+additional cutscene cancel triggers
+optional mirror and spawn change in a-07
+patched up mirror path for downclimb viability
+make sure mirror path triggers golden fail
+tuned opening cutscene
 
 TODO:
 
@@ -55,8 +58,6 @@ cutscene interrupt trigger
 
 manage transitions
 
-X create puzzle mirror assets
-    (maybe even just multiple rectangular mirrors forming a path)
 create kevin, derek, diamond assets
 create crumble block assets
 
