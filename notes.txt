@@ -1,8 +1,8 @@
-additional cutscene cancel triggers
-optional mirror and spawn change in a-07
-patched up mirror path for downclimb viability
-make sure mirror path triggers golden fail
-tuned opening cutscene
+update existing spawn change mirrors
+group mirrors in a-05 (except arrow)
+add some mirrors to a-05c
+mirrors and gravity spawn management in a-02, a-03, a-03b, a-04b
+a bunch of mirrors in a-05b
 
 TODO:
 
@@ -14,16 +14,9 @@ something for dynos
 
 now:
 
-figure out how to interrupt bird dash tutorial from ending the map
-maybe you can room transition out of it? (probably just doesn't transition but we can try)
-    yep it just doesn't do the room transition
-maybe you can use a remover on the bird like if the cutscene is a child of the bird? might need to add a lua cutscene to restore player control/state?
-maybe you can make like a cutscene cancel trigger that just scans for cutscene objects and removes them, then restores player state and control? that's why hitting f5 cancels the cutscene, right?
-
 can you detect whether eow is a dependency and skip scanning the map, loading hooks if it's not?
 
 maybe non-transition borders can have like a solid black (with alpha edges) torn hole decal that makes it look like there's a hole torn in the parallax styleground?
-
 
 hazard decoration
 
@@ -46,17 +39,8 @@ make small hex? patterns for underside ground
 
 maybe have some mostly transparent colored grid "clouds" drifting around in the background as a sort of fog to obscure background decals.
 
-might need a custom decal property to delay animation based on distance from player?
-i guess you do this by adding a component subclass to the decal that has an update function that does stuff to the decal via (Decal)base.Entity
-Though maybe if the property handler gets called when the decal is instantiated that could be a good time? depends how flag decals work. hmm. might need to make a bajillion registry entries with different hardcoded flags?
-
-frankly i might just make a custom entity for the popping -entrails- mirrors. then it could select a random variant and a random popping animation, and it makes it very easy to implement the distance-based delay.
-
-maybe have a controller entity that watches for the flag to change, and then when that happens it triggers all of the mirrors in the room (tracked), computing the delay for each as it activates it. that way you don't run an update call waiting for the flag every frame for every entity. otoh maybe that's not a big deal. it would just cause a lag spike when it went off anyway. just try it without a controller and see if it's a problem.
-
-cutscene interrupt trigger
-
 manage transitions
+gravity respawn targets
 
 create kevin, derek, diamond assets
 create crumble block assets
@@ -134,9 +118,6 @@ implement golden berry mirror puzzle
 implement golden berry gameplay
 
 finalize transition blocker lightbeams
-fix transition blocks (use kill player trigger?)
-
-figure out dr room placement
 
 adjust tileset cropping offset to try to improve alignment
 add corner masking to new tilesets
@@ -146,8 +127,6 @@ add tameplain tileset
 do-not-touch mirror for lookous
 
 maybe some kind of decal to indicate spawn locations that fix gravity?
-final climb mirror decals
-secret mirror decals
 a secret for backtracking from the first main room back to the temple area
 a secret room above the first double refill
     requires bubbling back, waiting for respawn, then jumping left and dashing up through the refill
