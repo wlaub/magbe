@@ -1,8 +1,11 @@
-update existing spawn change mirrors
-group mirrors in a-05 (except arrow)
-add some mirrors to a-05c
-mirrors and gravity spawn management in a-02, a-03, a-03b, a-04b
-a bunch of mirrors in a-05b
+mirrors and gravity spawn in a-04, a-05b
+make final climb overside compatible with inverted gravity
+mirrored up all the lookouts
+some mirror decoration
+tuned up backtrack to starting area
+implemented golden collect
+confiscate golden on regular endings
+mirror-based refill hiding
 
 TODO:
 
@@ -19,12 +22,7 @@ can you detect whether eow is a dependency and skip scanning the map, loading ho
 maybe non-transition borders can have like a solid black (with alpha edges) torn hole decal that makes it look like there's a hole torn in the parallax styleground?
 
 hazard decoration
-
-indicate spawn changes with golden mirrors that break on contact
-make them possible to go around so that changing spawns disables golden
-need a way to set temp flag on spawn
-
-indicate gravity-safe spawns with some kind of mirror
+split decals what need splitting on
 
 tune up background parallax colors
 
@@ -56,7 +54,9 @@ photograph eye for lookouts
 X implement mirror puzzle logic to control switch gate
     (as in boolean combination of each room's mirror flag presumably in the last room before the ending room)
 
-fix intro bird cutscene
+X fix intro bird cutscene
+
+cameras (ugh)
 
 create lore (here!)
 place lore
@@ -112,10 +112,10 @@ create burnt everything is fine note asset
 add everything is fine notes to updraft
 
 
-create golden berry mirror assets
+X create golden berry mirror assets
 
-implement golden berry mirror puzzle
-implement golden berry gameplay
+X implement golden berry mirror puzzle
+implement golden berry gameplay (updraft)
 
 finalize transition blocker lightbeams
 
@@ -123,10 +123,12 @@ adjust tileset cropping offset to try to improve alignment
 add corner masking to new tilesets
 add tameplain tileset
 
-#creepy eye decals for lookouts
-do-not-touch mirror for lookous
+creepy eye decals for lookouts
+X do-not-touch mirror for lookous
 
-maybe some kind of decal to indicate spawn locations that fix gravity?
+X maybe some kind of decal to indicate spawn locations that fix gravity?
+    better gravity management instead
+
 a secret for backtracking from the first main room back to the temple area
 a secret room above the first double refill
     requires bubbling back, waiting for respawn, then jumping left and dashing up through the refill
