@@ -1,11 +1,7 @@
-mirrors and gravity spawn in a-04, a-05b
-make final climb overside compatible with inverted gravity
-mirrored up all the lookouts
-some mirror decoration
-tuned up backtrack to starting area
-implemented golden collect
-confiscate golden on regular endings
-mirror-based refill hiding
+split decals in a-05
+fixed a-04b to a05 gravity inversion
+also 2-dash a-05b to a-06
+fixed up some broken mirror transition janks
 
 TODO:
 
@@ -21,8 +17,7 @@ can you detect whether eow is a dependency and skip scanning the map, loading ho
 
 maybe non-transition borders can have like a solid black (with alpha edges) torn hole decal that makes it look like there's a hole torn in the parallax styleground?
 
-hazard decoration
-split decals what need splitting on
+X split decals what need splitting on
 
 tune up background parallax colors
 
@@ -50,11 +45,6 @@ fix switch gate textures
 photograph eye for lookouts
     make the eye look around this the lookout (left-right)
     left eye for overside, right eye for underside
-
-X implement mirror puzzle logic to control switch gate
-    (as in boolean combination of each room's mirror flag presumably in the last room before the ending room)
-
-X fix intro bird cutscene
 
 cameras (ugh)
 
@@ -112,9 +102,6 @@ create burnt everything is fine note asset
 add everything is fine notes to updraft
 
 
-X create golden berry mirror assets
-
-X implement golden berry mirror puzzle
 implement golden berry gameplay (updraft)
 
 finalize transition blocker lightbeams
@@ -124,10 +111,6 @@ add corner masking to new tilesets
 add tameplain tileset
 
 creepy eye decals for lookouts
-X do-not-touch mirror for lookous
-
-X maybe some kind of decal to indicate spawn locations that fix gravity?
-    better gravity management instead
 
 a secret for backtracking from the first main room back to the temple area
 a secret room above the first double refill
