@@ -19,7 +19,7 @@ local script = {
         }
 }
 
-function do_it(texture, decal) 
+function do_it_to_it(texture, decal) 
     local target_depth
     if texture:find('iambad/magbe/gill/h') then
          target_depth=-90
@@ -37,9 +37,19 @@ function do_it(texture, decal)
          target_depth=-70
     elseif texture:find('iambad/magbe/ball/') then
          target_depth=-80
+    elseif texture:find('iambad/magbe/bgr/l') then
+         target_depth=14000
+    elseif texture:find('iambad/magbe/bgr/s') then
+         target_depth=16000
+    elseif texture:find('iambad/magbe/bgm/l') then
+         target_depth=14000
+    elseif texture:find('iambad/magbe/bgm/s') then
+         target_depth=16000
+    elseif texture:find('iambad/magbe/gmush/') then
+         target_depth=-99
     end
 
-    if target_depth ~= nil then
+    if target_depth ~= nil and target_depth < 12000 then
         if decal.depth == nil or decal.depth > target_depth or decal.depth < target_depth-8 then
             decal.depth = target_depth
         end
@@ -51,13 +61,13 @@ function script.run(room, args)
 
     for _,decal in ipairs(room.decalsBg) do
         local texture = decal.texture
-        do_it(texture, decal)
+        do_it_to_it(texture, decal)
     end
 
     for _,decal in ipairs(room.entities) do
         if decal._name == 'eow/GlobalDecal' then
             local texture = decal.sprite
-            do_it(texture, decal)
+            do_it_to_it(texture, decal)
         end
     end
 

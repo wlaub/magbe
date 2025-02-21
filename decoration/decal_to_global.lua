@@ -21,22 +21,8 @@ local script = {
         }
 }
 
-
-function dump(o)
-   if type(o) == 'table' then
-      local s = '{ '
-      for k,v in pairs(o) do
-         if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. '['..k..'] = ' .. dump(v) .. ','
-      end
-      return s .. '} '
-   else
-      return tostring(o)
-   end
-end
-
-
-function do_it(room, entity)
+function do_it_global(room, entity)
+    local item = entity.item
     local sprite = item.texture
     sprite = string.sub(sprite, 8)
 
@@ -58,20 +44,20 @@ end
 
 function script.run(room, args)
 
-    selection = selection_tool.getSelectionTargets() 
+    local selection = selection_tool.getSelectionTargets() 
     for _, entity in ipairs(selection) do
         if entity.layer == "decalsBg" then
-            item = entity.item
+            local item = entity.item
             if item.depth == nil then
                 item.depth = 9000
             end
-            do_it(room, entity)
+            do_it_global(room, entity)
         elseif entity.layer == "decalsFg" then
-            item = entity.item
+            local item = entity.item
             if item.depth == nil then
                 item.depth = -10501
             end
-            do_it(room, entity)
+            do_it_global(room, entity)
         end
 
     end

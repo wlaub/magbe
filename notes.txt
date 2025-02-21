@@ -1,7 +1,5 @@
-split decals in a-05
-fixed a-04b to a05 gravity inversion
-also 2-dash a-05b to a-06
-fixed up some broken mirror transition janks
+what is lua's fucking problem
+underside bg decoration in a-02, a-03, a-03c
 
 TODO:
 
@@ -17,20 +15,13 @@ can you detect whether eow is a dependency and skip scanning the map, loading ho
 
 maybe non-transition borders can have like a solid black (with alpha edges) torn hole decal that makes it look like there's a hole torn in the parallax styleground?
 
-X split decals what need splitting on
-
-tune up background parallax colors
+X? tune up background parallax colors
 
 make underside bg decoration decals 
-    * more blue
-
 make overside bg decoration decals
-    * more red
 
 make small ground shrooms for overside ground
 make small hex? patterns for underside ground
-
-maybe have some mostly transparent colored grid "clouds" drifting around in the background as a sort of fog to obscure background decals.
 
 manage transitions
 gravity respawn targets

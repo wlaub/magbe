@@ -59,6 +59,9 @@ class Decal():
             color = int(parts[0])%2*3+int(parts[1])
             name += f'-{color}'
 #            return (int(parts[0])%2)*3#+int(parts[1])
+        elif 'iambad/magbe/bgr/' in self.path:
+            name = name[2:]
+
 
         return base+'/'+name
 
