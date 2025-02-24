@@ -10,7 +10,23 @@ import watchdog.events
 import watchdog.observers
 
 filename = '/home/wlaub/celeste/olympus/decal_dump.txt'
+decals_dir = '../../waldmo/Graphics/Atlases/Gameplay/decals'
 
+all_decals = set()
+for dirpath, dirnames, filenames in os.walk(decals_dir):
+
+    decal_path = 'decals'+dirpath[len(decals_dir):]
+    for name in filenames:
+        if name[-4:] != '.png': continue
+        decal_name = decal_path+'/'+name[:-4]
+        try:
+            val = int(decal_name[-2:])
+            if val != 0:
+                continue
+        except ValueError:
+            decal_name += '00'
+            pass
+        all_decals.add(decal_name)
 
 class Decal():
     def __init__(self, line):
@@ -28,7 +44,47 @@ class Decal():
 
         self.room = ' '.join(parts[2:])
 
+    @staticmethod
+    def _get_key(path):
+        name = path.split('/')[-1]
+        base = '/'.join(path.split('/')[:-1])
+
+        if 'iambad/magbe/mush/' in path:
+            parts = name.split('.')
+            parts.pop(2)
+            name = '.'.join(parts)
+        elif 'iambad/magbe/gill/' in path:
+            if name[0] != 'h':
+                parts = name.split('.')
+                parts.pop(2)
+                name = '.'.join(parts)
+        elif 'iambad/magbe/stem/' in path:
+            if name[0] != 'h':
+                try:
+                    parts = name.split('.')
+                    parts.pop(3)
+                    name = '.'.join(parts)
+                except:
+                    pass
+#        elif 'iambad/magbe/ball/' in path:
+#            parts = name.split('.')
+#            parts.pop(2)
+#            name = '.'.join(parts)
+        elif 'iambad/magbe/tri/s' in path and name[0]=='s':
+            parts = name[1:].split('.')
+            color = int(parts[0])%2*3+int(parts[1])
+            name += f'-{color}'
+#            return (int(parts[0])%2)*3#+int(parts[1])
+        elif 'iambad/magbe/bgr/' in path:
+            name = name[2:]
+        elif 'iambad/magbe/bgm/' in path:
+            name = name[2:]
+
+        return base+'/'+name
+
+
     def get_key(self):
+        return self._get_key(self.path)
 
         name = self.path.split('/')[-1]
         base = '/'.join(self.path.split('/')[:-1])
@@ -61,6 +117,9 @@ class Decal():
 #            return (int(parts[0])%2)*3#+int(parts[1])
         elif 'iambad/magbe/bgr/' in self.path:
             name = name[2:]
+        elif 'iambad/magbe/bgm/' in self.path:
+            name = name[2:]
+
 
 
         return base+'/'+name
@@ -121,6 +180,13 @@ class DecalMachine():
         if filter_text is None:
             filter_text = self.filter_buffer.document.text
         room_name = self.room_buffer.document.text
+
+        for path in all_decals:
+            try:
+                path = Decal._get_key(path)
+            except: continue
+            if path.startswith(filter_text):
+                counts[path[len(filter_text):]] = 0
 
         for decal in self.decals:
             path = decal.get_key()
