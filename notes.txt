@@ -1,3 +1,6 @@
+bgm decoration in a-05, a-06
+change underside tileset and mess with footstep sounds
+added spawn change in a-03
 
 TODO:
 
@@ -22,6 +25,12 @@ make small hex? patterns for underside ground
 
 underside bg decoration
 overside bg decoration
+
+set different tilesets/footstep sounds for overside/underside/center
+
+mushroom puff trigger?
+on ground, play a randomized sound (pff? sight? ... moan?) and emit particles from line between two nodes or bottom edge of trigger (torn bits of paper?)
+alternatively emit particles from player location? for underside?
 
 make secret refills not spawn when you have 2 dash
 

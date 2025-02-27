@@ -135,7 +135,7 @@
     <set mask="center" tiles="9,4; 10,4; 9,5; 10,5"/>
   </Tileset>
 	
-  <Tileset id="o" copy="q" path="iambad/waldmo/magbemix" sound="43"/>
+  <Tileset id="o" copy="q" path="iambad/waldmo/magbemix" sound="32"/>
   <Tileset id="O" copy="q" path="iambad/waldmo/backlitplain" sound="43"/>
   <Tileset id="p" copy="q" path="iambad/waldmo/overcastred" sound="43"/>
 
@@ -155,8 +155,8 @@
   <Tileset id="V" copy="q" path="iambad/waldmo/darkwhite" sound="43"/>
   <Tileset id="w" copy="q" path="iambad/waldmo/brightwhite" sound="43"/>
 
-  <Tileset id="W" copy="q" path="iambad/waldmo/subduedpurp" sound="43"/>
-  <Tileset id="x" copy="q" path="iambad/waldmo/vividpurp" sound="43"/>
+  <Tileset id="W" copy="q" path="iambad/waldmo/subduedpurp" sound="1"/>
+  <Tileset id="x" copy="q" path="iambad/waldmo/vividpurp" sound="11"/>
   <Tileset id="X" copy="q" path="iambad/waldmo/xtremepurp" sound="43"/>
 
   <Tileset id="y" copy="q" path="iambad/waldmo/tamewhite" sound="43"/>
