@@ -28,7 +28,8 @@ screen = pygame.display.set_mode((w, h), pygame.RESIZABLE)
 INFILE = "data_in.json"
 OUTFILE = "data_out.json"
 
-PXPMM = 1.2581913499344692
+#PXPMM = 1.2581913499344692
+PXPMM = 1.26
 
 class Spinner:
     hitbox = None
@@ -210,6 +211,9 @@ class DragController:
         self.pos = (0,0)
         self.ref = (0,0)
         self.off = (0,0)
+
+    def bump(self, off):
+        self.pos = tuple(x+y for x,y in zip(self.pos, off))
 
     def start(self, x, y):
         self.active = True
@@ -578,15 +582,20 @@ class EditWindow:
 
         #### Grid Render
         def grid_render(n):
-            gx, gy = self.screen_to_local((x,y))
-            gx = gx-int(gx/n)*n
-            gy = gy-int(gy/n)*n
+            gxb, gyb = self.screen_to_local((x,y))
+            gx = gxb-int(gxb/n)*n
+            gy = gyb-int(gyb/n)*n
 
 
+            def get_color(i, g, gb):
+                a =round((i*n-g+gb)/n)
+                if a%2: return (255,255,255)
+                return (64,64,64)
 
             if self.show_grid or self.real_size:
                 if self.real_size:
                     c = (0,0,0)
+                    c = (64,64,64)
                 else:
                     c = (128,128,128)
                 try:
@@ -594,16 +603,16 @@ class EditWindow:
                         pygame.gfxdraw.vline(target,
                             int(i*scale*n-gx*scale),
                             0, int(h),
-                            c)
+                            get_color(i, gx, gxb))
                 except: pass
                 try:
                     for i in range (int(h/scale*n)):
                         pygame.gfxdraw.hline(target,
                             0, int(w),
                             int(i*scale*n-gy*scale),
-                            c)
+                            get_color(i,gy, gyb))
                 except: pass
-        grid_render(8)
+        grid_render(4)
 
 
 
@@ -812,6 +821,14 @@ while True:
                 edit_window.show_grid = not edit_window.show_grid
             elif event.key == K_z:
                 edit_window.real_size = not edit_window.real_size
+            elif event.key == K_u:
+                edit_window.view.bump((0,1))
+            elif event.key == K_h:
+                edit_window.view.bump((1,0))
+            elif event.key == K_j:
+                edit_window.view.bump((0,-1))
+            elif event.key == K_k:
+                edit_window.view.bump((-1,0))
             elif event.key == K_LEFT:
                 monitor_index -= 1
                 if monitor_index < 0:

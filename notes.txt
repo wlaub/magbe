@@ -1,5 +1,6 @@
-finished bgm decoration
-starting on gmush decoration
+made some gmush clusters
+a-02, a-03/b gmush placements
+fixed some a-03/b tiles
 
 TODO:
 
@@ -23,7 +24,6 @@ make small ground shrooms for overside ground
 make small hex? patterns for underside ground
 
 underside bg decoration
-X overside bg decoration
 
 set different tilesets/footstep sounds for overside/underside/center
 
