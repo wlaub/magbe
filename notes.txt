@@ -1,4 +1,3 @@
-remaining gmush decoration
 
 TODO:
 
@@ -16,19 +15,14 @@ maybe non-transition borders can have like a solid black (with alpha edges) torn
 
 X? tune up background parallax colors
 
-X make overside bg decoration decals
-
-X make small ground shrooms for overside ground
-
 make small aggregate patterns for underside ground
-
-underside bg decoration
     script to select component decals without replacement
     render script that takes lonn clipboard contents
     make at least 33?
     2, 3, 4, 5 tiles
     maybe 6
 
+underside bg decoration
 
 set different tilesets/footstep sounds for overside/underside/center
 
