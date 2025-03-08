@@ -22,7 +22,7 @@ make small aggregate patterns for underside ground
     2, 3, 4, 5 tiles
     maybe 6
 
-underside bg decoration
+X underside bg decoration
 
 set different tilesets/footstep sounds for overside/underside/center
 
@@ -36,8 +36,8 @@ alternatively emit particles from player location? for underside?
 
 make secret refills not spawn when you have 2 dash
 
-manage transitions
-gravity respawn targets
+X manage transitions
+X gravity respawn targets
 
 create kevin, derek, diamond assets
 create crumble block assets
