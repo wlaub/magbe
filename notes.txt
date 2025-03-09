@@ -1,3 +1,8 @@
+finish ground decoration
+adjust secret door, remove all secrets constraint
+secret room background adjustment
+
+
 
 TODO:
 
@@ -6,6 +11,9 @@ crumble blocks
 kevin/derek
 rideable diamond
 something for dynos
+collectable door replacements for base game assets
+    maybe even an icon?
+powerup extractor
 
 now:
 
@@ -15,14 +23,15 @@ maybe non-transition borders can have like a solid black (with alpha edges) torn
 
 X? tune up background parallax colors
 
-make small aggregate patterns for underside ground
+X make small aggregate patterns for underside ground
     script to select component decals without replacement
     render script that takes lonn clipboard contents
     make at least 33?
     2, 3, 4, 5 tiles
     maybe 6
 
-X underside bg decoration
+if you die while using a dyno then it throws an exception
+    probably a null player in Dyno.Update on Collide:Check
 
 set different tilesets/footstep sounds for overside/underside/center
 
@@ -35,9 +44,6 @@ random chance to removeself, once per life, once ever, every time, etc
 alternatively emit particles from player location? for underside?
 
 make secret refills not spawn when you have 2 dash
-
-X manage transitions
-X gravity respawn targets
 
 create kevin, derek, diamond assets
 create crumble block assets
