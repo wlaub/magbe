@@ -1,7 +1,4 @@
-finish ground decoration
-adjust secret door, remove all secrets constraint
-secret room background adjustment
-
+remove some tech from updraft
 
 
 TODO:
@@ -23,17 +20,15 @@ maybe non-transition borders can have like a solid black (with alpha edges) torn
 
 X? tune up background parallax colors
 
-X make small aggregate patterns for underside ground
-    script to select component decals without replacement
-    render script that takes lonn clipboard contents
-    make at least 33?
-    2, 3, 4, 5 tiles
-    maybe 6
-
 if you die while using a dyno then it throws an exception
     probably a null player in Dyno.Update on Collide:Check
 
 set different tilesets/footstep sounds for overside/underside/center
+
+need to color code music sources based on 
+* timing of wave - make the wave spread or scatter across the map
+* category/variant of sound - to match with objects and ensure uniform distribution of variants
+* maybe an icon for kind of noise and a color of icon for variant
 
 final climb:
 one trigger for all parts of path, apply single respawn lockout at every stage of progression
@@ -44,9 +39,6 @@ random chance to removeself, once per life, once ever, every time, etc
 alternatively emit particles from player location? for underside?
 
 make secret refills not spawn when you have 2 dash
-
-create kevin, derek, diamond assets
-create crumble block assets
 
 replace vanilla spikes textures
 
@@ -59,6 +51,7 @@ photograph eye for lookouts
 cameras (ugh)
 
 create lore (here!)
+  quote the answer (tmbg) somewhere
 place lore
 
 "it's wednesday somewhere else"
@@ -81,14 +74,15 @@ record different drones for each of something like:
 =47 layers
 some tracks should be sparse so that you're unlikely to hear them e.g. the intro car, fire hydrants, here!, mirrors, lookouts
 can you modulate music playback speed as a parameter or something and use it to make different chords in different rooms?
+song of the wanderer at twm remnants
 
-random spikes
+X random spikes
 
-slow resonant filter swells
+X slow resonant filter swells
 
-smooth drone w/ pops - maybe even just take it out of most high honorsi or high honors
+X smooth drone w/ pops - maybe even just take it out of most high honorsi or high honors
 
-lfsr glitch noise
+X lfsr glitch noise
 
 heartbeat and breathing sounds for lookouts?
 
@@ -96,7 +90,6 @@ heartbeat and breathing sounds for lookouts?
 suffer (fmod)
 add music sources
 
-create powerup remover decals
 
 create updraft intro cutscene
 
