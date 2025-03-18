@@ -1,4 +1,3 @@
-remove some tech from updraft
 
 
 TODO:
@@ -24,6 +23,9 @@ if you die while using a dyno then it throws an exception
     probably a null player in Dyno.Update on Collide:Check
 
 set different tilesets/footstep sounds for overside/underside/center
+
+
+decal registry flow attribute - set phase based on tile position modulo, relative to some nearby reference entity?
 
 need to color code music sources based on 
 * timing of wave - make the wave spread or scatter across the map

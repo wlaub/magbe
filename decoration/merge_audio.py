@@ -3,6 +3,7 @@ import math
 
 
 import soundfile as sf
+import numpy as np
 
 from matplotlib import pyplot as plt
 
@@ -16,41 +17,11 @@ DUR = 7*60
 XFADE= 0.1
 
 #for 1-minute loops
-PAD = 0.1
-W = 0.5
-DUR = 1*60
-XFADE= 0.1
-GAIN = 1
-
-
-#for 1-minute loops
-PAD = 0.1
-W = 0.5
-DUR = 1*60
-XFADE= 0.1
-GAIN = 1
-key = 'iwse_thorns_'
-
-"""
-#for shards loops
-PAD = 0.1
-W = 0.5
-DUR = 1*60
-XFADE= 0.1
-GAIN = 2
-key = 'iwse_shards_'
-"""
-
-"""
-#for glitchdrone loops
-PAD = 0.1
-W = 0.5
+PAD = 0.001
+W = 0.1
 DUR = 1*60
 XFADE= 0.05
 GAIN = 4
-key = 'iwse_glitchdrone_'
-"""
-
 
 #for 1-minute surges
 #TODO
@@ -65,7 +36,7 @@ filemap = {
 }
 
 
-
+key = 'iwse_twm_'
 
 files = os.listdir(source_dir)
 
@@ -74,34 +45,96 @@ fmap = {}
 for file in files:
     if not key in file: continue
     ext = file[len(key):-4]
-    pitch, idx = ext.split('_')
-    fmap.setdefault(pitch, []).append((file, idx))
-
-filemap = {}
-idx = 0
-for pitch in pitches:
-    if not pitch in fmap.keys(): continue
-    for file, fidx in sorted(fmap[pitch]):
-        filemap[pitch+'_'+fidx] = str(idx)
-        idx += 1
-
-#for j in range(7):
-
-#    filename = f'iwse_shroom_{j}.wav'
-
-for infile, outfile in filemap.items():
-
-    filename = f'{key}{infile}.wav'
-    outfile = f'{key}{outfile}.wav'
-
-    path = os.path.join(source_dir, filename)
+    parts = ext.split('_')
+    pitch = '_'.join(parts[:-1])
+    channel = parts[-1]
+    fmap.setdefault(pitch, []).append((file, channel))
 
 
-    data, fs = sf.read(path)
+print(fmap)
+
+settings_map = {
+'burst': {
+#    'pad': 230.02,
+    'pad': 230.52,
+    'w': 0.1,
+    'dur':7*60+4/44100,
+    'xfade': 0.1,
+    },
+'drone': {
+    'pad': 0.001,
+    'w': 0.1,
+    'dur':7*60,
+    'xfade': 0.1,
+    },
+'melody': {
+    'pad': 0.001,
+    'w': 0.1,
+    'dur':7*60,
+    'xfade': 0.1,
+    },
+'shriek': {
+    'pad': 0.001,
+    'w': 0.1,
+    'dur':7*60,
+    'xfade': 0.1,
+    },
+'sparkles': {
+    'pad': 303,
+    'w': 0.5,
+    'dur':7*60,
+    'xfade': 4,
+    },
+'meat': {
+    'pad': 4*60+44.8,
+    'w': 0.5,
+    'dur':7*60,
+    'xfade': 4,
+    },
+'extra_meat': {
+    'pad': 12*60+55.6,
+    'w': 0.5,
+    'dur':7*60,
+    'xfade': 4,
+    },
+
+
+
+
+
+}
+
+
+
+
+for name, channels in fmap.items():
+
+    settings = settings_map.get(name, {})
+    if settings == {}: continue
+    #for 1-minute loops
+    PAD = settings.get('pad', 0.001)
+    W = settings.get('w', 0.1)
+    DUR = settings.get('dur', 60)
+    XFADE= settings.get('xfade', 0.1)
+    GAIN = settings.get('gain', 1)
+
+    outfile = f'{key}{name}.wav'
+
+    merge_data = {}
+    for filename, channel in channels:
+        print(filename)
+
+        path = os.path.join(source_dir, filename)
+        data, fs = sf.read(path)
+
+        merge_data[channel] = (data, fs)
+
+    data = np.stack([merge_data['l'][0], merge_data['r'][0]], axis=1)
+    print(data[0])
 
     left = round(fs*PAD)
     right = left + round(fs*W)
-    end = DUR*fs
+    end = round(DUR*fs)
 
     xvals = list(range(left, right))
     yvals = []
@@ -134,7 +167,7 @@ for infile, outfile in filemap.items():
     ax2.scatter(xvals, yvals3, s=3, c='b')
     ax2.scatter(*list(zip(*bests)), s=4, c='g')
 
-    plt.show()
+#    plt.show()
 
 
     start_idx, _ = bests[0]
@@ -157,17 +190,14 @@ for infile, outfile in filemap.items():
 
     data = data[:end]
 
-    if GAIN != 1:
-        data *= GAIN
-#        for idx in range(len(data)):
-#            data[idx][0] *= GAIN
-#            data[idx][1] *= GAIN
+    GAIN = 1/np.max(np.abs(data))
+
+    if GAIN > 1:
+        data*=GAIN
 
     outpath = os.path.join(output_dir, outfile)
     if outpath == path:
         raise RuntimeError('Path failure')
-
-    print(len(data))
 
     sf.write(outpath, data, fs)
 
