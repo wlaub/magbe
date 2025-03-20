@@ -1,19 +1,10 @@
-music in a-03&, a-04*
-all twm music
-various asset updates
-secret rooms tweaks
-most base music done
 
 TODO:
 
 assets:
-X crumble blocks
-X kevin/derek
-X rideable diamond
 something for dynos
 collectable door replacements for base game assets
     maybe even an icon?
-X powerup extractor
 
 diamond rider background (gradient light on paper)
 lookouts
