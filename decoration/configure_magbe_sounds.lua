@@ -46,9 +46,9 @@ function script.run(room, args)
              decal.min_distance = 40
              decal.max_distance = 720
         elseif texture:find('shard') then
-             decal.min_distance = 20
-             decal.max_distance = 160
- 
+             decal.min_distance = 0
+             decal.max_distance = 100
+             decal.max_value = 1
         end
 
     end

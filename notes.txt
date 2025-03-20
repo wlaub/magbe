@@ -1,19 +1,29 @@
-
+music in a-03&, a-04*
+all twm music
+various asset updates
+secret rooms tweaks
+most base music done
 
 TODO:
 
 assets:
-crumble blocks
-kevin/derek
-rideable diamond
+X crumble blocks
+X kevin/derek
+X rideable diamond
 something for dynos
 collectable door replacements for base game assets
     maybe even an icon?
-powerup extractor
+X powerup extractor
+
+diamond rider background (gradient light on paper)
+lookouts
+switchgate icon
+plain spinner
+torn edges
+
+lores
 
 now:
-
-can you detect whether eow is a dependency and skip scanning the map, loading hooks if it's not?
 
 maybe non-transition borders can have like a solid black (with alpha edges) torn hole decal that makes it look like there's a hole torn in the parallax styleground?
 
@@ -22,8 +32,11 @@ X? tune up background parallax colors
 if you die while using a dyno then it throws an exception
     probably a null player in Dyno.Update on Collide:Check
 
-set different tilesets/footstep sounds for overside/underside/center
+make sure that one of the everything is fine notes has like a 2 second delay on the dialog activation
 
+also go add some stereo spread to the different layers esp noise layers. 
+
+what if you could make some set of music sources control the lights. maybe just make it so that the largest value across all sources is used to set the lights.
 
 decal registry flow attribute - set phase based on tile position modulo, relative to some nearby reference entity?
 
