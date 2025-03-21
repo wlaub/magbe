@@ -22,6 +22,31 @@ local script = {
 function script.run(room, args)
 
     local function do_it_to_it(decal) 
+
+local texture = decal.layers
+if texture:find('shroom') then
+     local idx = tonumber(string.sub(texture, 7))
+     decal.variant = idx/7
+elseif texture:find('swoop') then
+     local idx = tonumber(string.sub(texture, 6))
+     decal.variant = idx/7
+elseif texture:find('organ') then
+     local idx = tonumber(string.sub(texture, 6))
+     decal.variant = idx/7
+elseif texture:find('shard') then
+     local idx = tonumber(string.sub(texture, 6))
+     decal.variant = idx/9
+elseif texture:find('thorn') then
+     local idx = tonumber(string.sub(texture, 6))
+     decal.variant = idx/13
+elseif texture:find('gd') then
+     local idx = tonumber(string.sub(texture, 3))
+     decal.variant = idx/10
+end
+
+
+
+
         if decal.lock then
             return
         end
@@ -39,6 +64,7 @@ function script.run(room, args)
         if texture:find('shroom') then
              decal.min_distance = 40
              decal.max_distance = 720
+             
         elseif texture:find('swoop') then
              decal.min_distance = 40
              decal.max_distance = 720

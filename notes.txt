@@ -16,6 +16,16 @@ lores
 
 now:
 
+rework shard sound
+tune shard radius
+
+place ambient sounds
+place final climb mirror sounds
+
+tune hazard sound phase/add surge
+
+
+
 maybe non-transition borders can have like a solid black (with alpha edges) torn hole decal that makes it look like there's a hole torn in the parallax styleground?
 
 X? tune up background parallax colors
