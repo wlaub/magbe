@@ -12,7 +12,7 @@ output_dir = '../../iwse/sources/synthloops'
 #for 7-minute loops
 PAD = 0.00
 W = 0.1
-DUR = 7*60
+DUR = 7*60+4/44100
 XFADE= 0.1
 
 #for 1-minute loops
@@ -51,6 +51,13 @@ GAIN = 4
 key = 'iwse_glitchdrone_'
 """
 
+#for sharder
+PAD = 0.00
+W = 0.1
+DUR = 7*60+4/44100
+XFADE= 0.1
+key = 'iwse_sharder_'
+
 
 #for 1-minute surges
 #TODO
@@ -69,12 +76,17 @@ filemap = {
 
 files = os.listdir(source_dir)
 
-pitches = ['ultralow', 'hyperlow', 'low', 'mid', 'high', 'superhigh', 'hyperhigh', 'ultrahigh', 'gigahigh','mosthigh', 'mosthigher']
+pitches = ['ultralow', 'hyperlow', 'low', 'mid', 'high', 'superhigh', 'hyperhigh', 'ultrahigh', 'gigahigh','mosthigh', 'mosthigher', '']
 fmap = {}
 for file in files:
     if not key in file: continue
     ext = file[len(key):-4]
-    pitch, idx = ext.split('_')
+    try:
+        int(ext)
+        idx = ext
+        pitch = ''
+    except:
+        pitch, idx = ext.split('_')
     fmap.setdefault(pitch, []).append((file, idx))
 
 filemap = {}
@@ -82,7 +94,10 @@ idx = 0
 for pitch in pitches:
     if not pitch in fmap.keys(): continue
     for file, fidx in sorted(fmap[pitch]):
-        filemap[pitch+'_'+fidx] = str(idx)
+        if len(pitch) > 0:
+            filemap[pitch+'_'+fidx] = str(idx)
+        else:
+            filemap[fidx] = str(idx)
         idx += 1
 
 #for j in range(7):
@@ -101,7 +116,7 @@ for infile, outfile in filemap.items():
 
     left = round(fs*PAD)
     right = left + round(fs*W)
-    end = DUR*fs
+    end = round(DUR*fs)
 
     xvals = list(range(left, right))
     yvals = []
@@ -134,7 +149,7 @@ for infile, outfile in filemap.items():
     ax2.scatter(xvals, yvals3, s=3, c='b')
     ax2.scatter(*list(zip(*bests)), s=4, c='g')
 
-    plt.show()
+#    plt.show()
 
 
     start_idx, _ = bests[0]

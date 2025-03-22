@@ -23,6 +23,8 @@ class Source():
         self.x = float(parts[1])-MIDDLE
         self.y = float(parts[2])
 
+        self.id = int(parts[3])
+
         try:
             self.variant = int(self.name[-2:])
             self.layer = self.name[:-2]
@@ -71,6 +73,8 @@ class Source():
             self.base_phase = 2/7
         if self.layer == 'swoop':
             self.base_phase = 1.33/7
+        if self.layer == 'shard':
+            self.base_phase = 1/7
 
         #get track phase
         if self.base_phase is not None:
@@ -122,6 +126,8 @@ for layer, variants in dm.layer_variants.items():
 #        continue
     for variant, sources in variants.items():
         phases = [x.phase for x in sources if x.group in ["left", "right"]]
+        if len(phases) == 0:
+            continue
 
         c = [math.cos(x*math.pi*2) for x in phases]
         s = [math.sin(x*math.pi*2) for x in phases]

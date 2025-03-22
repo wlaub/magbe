@@ -1,3 +1,7 @@
+fixed up shards
+various music tweaks
+music flags
+place final climb mirrors
 
 TODO:
 
@@ -5,6 +9,7 @@ assets:
 something for dynos
 collectable door replacements for base game assets
     maybe even an icon?
+    at least try a mist replacement
 
 diamond rider background (gradient light on paper)
 lookouts
@@ -16,14 +21,26 @@ lores
 
 now:
 
-rework shard sound
-tune shard radius
+X rework shard sound
+X tune shard radius
 
 place ambient sounds
-place final climb mirror sounds
+X place final climb mirror sounds
 
 tune hazard sound phase/add surge
+do stereo spread
+X maybe slow down base music params a little bit
 
+X add disable flags to each category of sound so that they can be independently disabled
+
+dynos:
+    fan that spins when you use it
+    though hole led
+    screw
+    pin
+    thumbtack
+    something that pops
+    
 
 
 maybe non-transition borders can have like a solid black (with alpha edges) torn hole decal that makes it look like there's a hole torn in the parallax styleground?
@@ -92,14 +109,6 @@ some tracks should be sparse so that you're unlikely to hear them e.g. the intro
 can you modulate music playback speed as a parameter or something and use it to make different chords in different rooms?
 song of the wanderer at twm remnants
 
-X random spikes
-
-X slow resonant filter swells
-
-X smooth drone w/ pops - maybe even just take it out of most high honorsi or high honors
-
-X lfsr glitch noise
-
 heartbeat and breathing sounds for lookouts?
 
 
@@ -137,11 +146,23 @@ a secret room above the first double refill
 
 postcard
 lore
-    all the mechanical complexity of a teapot
-    all the conceptual complexity of a techspam map?
+    all the conceptual complexity of a techspam map
+    determinism isn't a theory it's an observation?
+    the meat sweats. it does not understand.
+
+score 2600 points on diamond rider for a berry
+
+
 hydrants
 
 updraft:
+
+background text
+    i've been watching
+    listening
+    observing
+    and i think maybe
+    something is wrong with the universe
 
 plain spikes
 plain spinners

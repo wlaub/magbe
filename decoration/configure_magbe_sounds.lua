@@ -27,21 +27,27 @@ local texture = decal.layers
 if texture:find('shroom') then
      local idx = tonumber(string.sub(texture, 7))
      decal.variant = idx/7
+     decal.enable_flag = '!disable_shroom'
 elseif texture:find('swoop') then
      local idx = tonumber(string.sub(texture, 6))
      decal.variant = idx/7
+     decal.enable_flag = '!disable_swoop'
 elseif texture:find('organ') then
      local idx = tonumber(string.sub(texture, 6))
      decal.variant = idx/7
+     decal.enable_flag = '!disable_organ'
 elseif texture:find('shard') then
      local idx = tonumber(string.sub(texture, 6))
      decal.variant = idx/9
+     decal.enable_flag = '!disable_shard'
 elseif texture:find('thorn') then
      local idx = tonumber(string.sub(texture, 6))
      decal.variant = idx/13
+     decal.enable_flag = '!disable_thorn'
 elseif texture:find('gd') then
      local idx = tonumber(string.sub(texture, 3))
      decal.variant = idx/10
+     decal.enable_flag = '!disable_gd'
 end
 
 
@@ -72,8 +78,8 @@ end
              decal.min_distance = 40
              decal.max_distance = 720
         elseif texture:find('shard') then
-             decal.min_distance = 0
-             decal.max_distance = 100
+             decal.min_distance = 8
+             decal.max_distance = 240
              decal.max_value = 1
         end
 
