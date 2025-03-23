@@ -1,7 +1,5 @@
-fixed up shards
-various music tweaks
-music flags
-place final climb mirrors
+placed all ambient except pacing
+lookout asset
 
 TODO:
 
@@ -12,7 +10,7 @@ collectable door replacements for base game assets
     at least try a mist replacement
 
 diamond rider background (gradient light on paper)
-lookouts
+X looikouts
 switchgate icon
 plain spinner
 torn edges
@@ -21,17 +19,12 @@ lores
 
 now:
 
-X rework shard sound
-X tune shard radius
 
-place ambient sounds
-X place final climb mirror sounds
+place and tune pacing sounds
 
 tune hazard sound phase/add surge
 do stereo spread
-X maybe slow down base music params a little bit
 
-X add disable flags to each category of sound so that they can be independently disabled
 
 dynos:
     fan that spins when you use it
@@ -42,13 +35,9 @@ dynos:
     something that pops
     
 
-
 maybe non-transition borders can have like a solid black (with alpha edges) torn hole decal that makes it look like there's a hole torn in the parallax styleground?
 
 X? tune up background parallax colors
-
-if you die while using a dyno then it throws an exception
-    probably a null player in Dyno.Update on Collide:Check
 
 make sure that one of the everything is fine notes has like a 2 second delay on the dialog activation
 
@@ -56,20 +45,8 @@ also go add some stereo spread to the different layers esp noise layers.
 
 what if you could make some set of music sources control the lights. maybe just make it so that the largest value across all sources is used to set the lights.
 
-decal registry flow attribute - set phase based on tile position modulo, relative to some nearby reference entity?
-
-need to color code music sources based on 
-* timing of wave - make the wave spread or scatter across the map
-* category/variant of sound - to match with objects and ensure uniform distribution of variants
-* maybe an icon for kind of noise and a color of icon for variant
-
 final climb:
 one trigger for all parts of path, apply single respawn lockout at every stage of progression
-
-mushroom puff trigger?
-on ground, play a randomized sound (pff? sight? ... moan?) and emit particles from line between two nodes or bottom edge of trigger (torn bits of paper?)
-random chance to removeself, once per life, once ever, every time, etc
-alternatively emit particles from player location? for underside?
 
 make secret refills not spawn when you have 2 dash
 
@@ -168,6 +145,15 @@ plain spikes
 plain spinners
 
 maybe updraft can be all crumbly (at least in the east section)
+
+
+descoped for now:
+
+mushroom puff trigger?
+on ground, play a randomized sound (pff? sight? ... moan?) and emit particles from line between two nodes or bottom edge of trigger (torn bits of paper?)
+random chance to removeself, once per life, once ever, every time, etc
+alternatively emit particles from player location? for underside?
+
 
 
 Description:
