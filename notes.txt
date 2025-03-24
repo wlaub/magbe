@@ -1,4 +1,4 @@
-fix a mirror issue in a-03c
+update last climb mirrors
 
 TODO:
 
@@ -25,11 +25,15 @@ endscreen
 now:
 
 
-place and tune pacing sounds
+X place and tune pacing sounds
 
-tune hazard sound phase/add surge
+X tune hazard sound phase/add surge
+
 do stereo spread
 
+make music sound source fade out/cut all params on level end or sthg
+
+make something that sets a flag if flag only transition someday?
 
 dynos:
     fan that spins when you use it
@@ -46,12 +50,10 @@ X? tune up background parallax colors
 
 make sure that one of the everything is fine notes has like a 2 second delay on the dialog activation
 
-also go add some stereo spread to the different layers esp noise layers. 
+X what if you could make some set of music sources control the lights. maybe just make it so that the largest value across all sources is used to set the lights.
 
-what if you could make some set of music sources control the lights. maybe just make it so that the largest value across all sources is used to set the lights.
-
-final climb:
-one trigger for all parts of path, apply single respawn lockout at every stage of progression
+X final climb:
+X one trigger for all parts of path, apply single respawn lockout at every stage of progression
 
 make secret refills not spawn when you have 2 dash
 
