@@ -50,17 +50,27 @@ XFADE= 0.05
 GAIN = 4
 key = 'iwse_glitchdrone_'
 """
-
+"""
 #for sharder
 PAD = 0.00
 W = 0.1
 DUR = 7*60+4/44100
 XFADE= 0.1
 key = 'iwse_sharder_'
-
+"""
 
 #for 1-minute surges
 #TODO
+
+#for 1-minute surges
+PAD = 60
+W = 0.5
+DUR = 1*60
+XFADE= 0.1
+GAIN = 4
+key = 'iwse_thorns_'
+key = 'iwse_glitchdrone_'
+
 
 #for shroom
 filemap = {
@@ -107,7 +117,7 @@ for pitch in pitches:
 for infile, outfile in filemap.items():
 
     filename = f'{key}{infile}.wav'
-    outfile = f'{key}{outfile}.wav'
+    outfile = f'{key}surge_{outfile}.wav'
 
     path = os.path.join(source_dir, filename)
 

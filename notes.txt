@@ -1,21 +1,26 @@
-placed all ambient except pacing
-lookout asset
+fix a mirror issue in a-03c
 
 TODO:
 
 assets:
+
+diamond rider background (gradient light on paper)
+
+switchgate + icon
+plain spinner
+extractor pipe
+
 something for dynos
-collectable door replacements for base game assets
+
+torn edges
+
+collectable door replacements for base game assets (scripting work)
     maybe even an icon?
     at least try a mist replacement
 
-diamond rider background (gradient light on paper)
-X looikouts
-switchgate icon
-plain spinner
-torn edges
-
 lores
+
+endscreen
 
 now:
 
