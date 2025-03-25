@@ -1,16 +1,26 @@
-update last climb mirrors
+fix missing light control flag in eotw
+set powerup poem
+added dyno assets
+fixed up crumble block asset to use pk6
 
 TODO:
 
 assets:
 
-diamond rider background (gradient light on paper)
+X diamond rider background (gradient light on paper)
 
 switchgate + icon
 plain spinner
 extractor pipe
 
-something for dynos
+X something for dynos
+    fan that spins when you use it
+X    though hole led
+    screw
+X    pin
+X    thumbtack
+    something that pops
+ 
 
 torn edges
 
@@ -24,52 +34,83 @@ endscreen
 
 now:
 
+X do stereo spread
 
-X place and tune pacing sounds
+X make music sound source fade out/cut all params on level end or sthg
+    good enough
 
-X tune hazard sound phase/add surge
-
-do stereo spread
-
-make music sound source fade out/cut all params on level end or sthg
-
-make something that sets a flag if flag only transition someday?
-
-dynos:
-    fan that spins when you use it
-    though hole led
-    screw
-    pin
-    thumbtack
-    something that pops
-    
-
-maybe non-transition borders can have like a solid black (with alpha edges) torn hole decal that makes it look like there's a hole torn in the parallax styleground?
-
-X? tune up background parallax colors
-
-make sure that one of the everything is fine notes has like a 2 second delay on the dialog activation
-
-X what if you could make some set of music sources control the lights. maybe just make it so that the largest value across all sources is used to set the lights.
-
-X final climb:
-X one trigger for all parts of path, apply single respawn lockout at every stage of progression
-
-make secret refills not spawn when you have 2 dash
+X set powerup poem
+X    everything is fine?
+X     the black wind howls?
 
 replace vanilla spikes textures
 
 fix switch gate textures
 
-photograph eye for lookouts
-    make the eye look around this the lookout (left-right)
-    left eye for overside, right eye for underside
+make secret refills not spawn when you have 2 dash
+
+X? tune up background parallax colors
+
+make sure that one of the everything is fine notes has like a 2 second delay on the dialog activation
+    ideally it should be placed and timed so tht the player is likely to die as a result of the sudden control loss
 
 cameras (ugh)
 
+postcard
+
+create burnt everything is fine note asset
 create lore (here!)
-  quote the answer (tmbg) somewhere
+    quote the answer (tmbg) somewhere?
+    all the conceptual complexity of a techspam map
+    determinism isn't a theory it's an observation?
+    the meat sweats. it does not understand.
+    day 3: It is still Wednesday. (after getting 2 dash)
+
 place lore
+    everything is fine in a-05c, diamond rider, etc when 2dash
+    disable a-05c ending when 2dash?
+place fire hydrants
+
+score 2600 points on diamond rider for a berry
+
+
+
+suffer (fmod)
+
+create updraft intro cutscene
+
+finish redecorating updraft
+maybe: destroy most of the terrain and shift further left, lots of crumble on touch blocks, crumble dynos, might need to reduce dream blocks. it's okay if the connection to twoteof is obscured, even desirabe early in the area.
+the transition from main map can just be that you can only reach the top of the room on the right, but after that you're free to dash up and down the transition all you want. - might require some adjustment to make the room taller and to reach a higher jump refill
+maybe most of the dream blocks are exposed but you can't dash into the ends of them so you can't travel inside them - only orthogonal and diagonal dashes
+make permanent trigger that when you go through it makes like crumbled blocks permanent in a room? so you can have reusable crumble blocks that become permanent once you clear the room out the other side, and then you'd better have left some behind for the downclimb.
+
+implement updraft gameplay
+
+add everything is fine notes to updraft
+
+implement golden berry gameplay (updraft)
+
+adjust tileset cropping offset to try to improve alignment
+add corner masking to new tilesets
+add tameplain tileset
+
+a secret for backtracking from the first main room back to the temple area
+a secret room above the first double refill
+    requires bubbling back, waiting for respawn, then jumping left and dashing up through the refill
+
+updraft:
+
+background text
+    i've been watching
+    listening
+    observing
+    and i think maybe
+    something is wrong with the universe
+
+maybe updraft can be all crumbly (at least in the east section)
+
+music notes:
 
 "it's wednesday somewhere else"
 
@@ -95,63 +136,6 @@ song of the wanderer at twm remnants
 
 heartbeat and breathing sounds for lookouts?
 
-
-suffer (fmod)
-add music sources
-
-
-create updraft intro cutscene
-
-finish redecorating updraft
-maybe: destroy most of the terrain and shift further left, lots of crumble on touch blocks, crumble dynos, might need to reduce dream blocks. it's okay if the connection to twoteof is obscured, even desirabe early in the area.
-the transition from main map can just be that you can only reach the top of the room on the right, but after that you're free to dash up and down the transition all you want. - might require some adjustment to make the room taller and to reach a higher jump refill
-maybe most of the dream blocks are exposed but you can't dash into the ends of them so you can't travel inside them - only orthogonal and diagonal dashes
-make permanent trigger that when you go through it makes like crumbled blocks permanent in a room? so you can have reusable crumble blocks that become permanent once you clear the room out the other side, and then you'd better have left some behind for the downclimb.
-
-implement updraft gameplay
-come up with a better placeholder sprite for dyno's
-create burnt everything is fine note asset
-add everything is fine notes to updraft
-
-
-implement golden berry gameplay (updraft)
-
-finalize transition blocker lightbeams
-
-adjust tileset cropping offset to try to improve alignment
-add corner masking to new tilesets
-add tameplain tileset
-
-creepy eye decals for lookouts
-
-a secret for backtracking from the first main room back to the temple area
-a secret room above the first double refill
-    requires bubbling back, waiting for respawn, then jumping left and dashing up through the refill
-
-postcard
-lore
-    all the conceptual complexity of a techspam map
-    determinism isn't a theory it's an observation?
-    the meat sweats. it does not understand.
-
-score 2600 points on diamond rider for a berry
-
-
-hydrants
-
-updraft:
-
-background text
-    i've been watching
-    listening
-    observing
-    and i think maybe
-    something is wrong with the universe
-
-plain spikes
-plain spinners
-
-maybe updraft can be all crumbly (at least in the east section)
 
 
 descoped for now:

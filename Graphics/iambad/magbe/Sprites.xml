@@ -842,6 +842,70 @@
     <Loop id="used" path="boosterRed" delay="0.08" frames="35"/>
   </dyno>
 
+  <dyno_eye path="objects/waldmo/dyno/" start="idle">
+    <Justify x="0.5" y="0.5"/>
+    <Loop id="idle" path="eye" delay="0.1" frames="0"/>
+    <Anim id="active_single" path="eye" delay="0.08" frames="1-6" goto="used"/>
+    <Anim id="active_multi" path="eye" delay="0.08" frames="1-6" goto="idle"/>
+    <Loop id="used" path="eye" delay="0.08" frames="0-6"/>
+  </dyno_eye>
+
+  <dyno_bean_a path="objects/waldmo/dyno/" start="idle">
+    <Justify x="0.5" y="0.5"/>
+    <Loop id="idle" path="bean" delay="0.1" frames="0"/>
+    <Anim id="active_multi" path="bean" delay="0.08" frames="0" goto="idle"/>
+  </dyno_bean_a>
+  <dyno_bean_b path="objects/waldmo/dyno/" start="idle">
+    <Justify x="0.5" y="0.5"/>
+    <Loop id="idle" path="bean" delay="0.1" frames="1"/>
+    <Anim id="active_multi" path="bean" delay="0.08" frames="1" goto="idle"/>
+  </dyno_bean_b>
+  <dyno_bean_c path="objects/waldmo/dyno/" start="idle">
+    <Justify x="0.5" y="0.5"/>
+    <Loop id="idle" path="bean" delay="0.1" frames="2"/>
+    <Anim id="active_multi" path="bean" delay="0.08" frames="2" goto="idle"/>
+  </dyno_bean_c>
+  <dyno_bean_d path="objects/waldmo/dyno/" start="idle">
+    <Justify x="0.5" y="0.5"/>
+    <Loop id="idle" path="bean" delay="0.1" frames="3"/>
+    <Anim id="active_multi" path="bean" delay="0.08" frames="3" goto="idle"/>
+  </dyno_bean_d>
+
+  <dyno_pin path="objects/waldmo/dyno/" start="idle">
+    <Justify x="0.5" y="0.5"/>
+    <Loop id="idle" path="pin" delay="0.1" frames="0"/>
+    <Anim id="active_multi" path="pin" delay="0.08" frames="0" goto="idle"/>
+  </dyno_pin>
+
+  <dyno_tack path="objects/waldmo/dyno/" start="idle">
+    <Justify x="0.5" y="0.5"/>
+    <Loop id="idle" path="tack" delay="0.1" frames="0"/>
+    <Anim id="active_multi" path="tack" delay="0.08" frames="0" goto="idle"/>
+  </dyno_tack>
+
+  <dyno_battery path="objects/waldmo/dyno/" start="idle">
+    <Justify x="0.5" y="0.5"/>
+    <Loop id="idle" path="battery" delay="0.1" frames="0"/>
+    <Anim id="active_multi" path="battery" delay="0.08" frames="0" goto="idle"/>
+  </dyno_battery>
+
+  <dyno_led path="objects/waldmo/dyno/" start="idle">
+    <Justify x="0.5" y="0.5"/>
+    <Loop id="idle" path="led" delay="0.1" frames="0"/>
+    <Anim id="active_multi" path="led" delay="0.08" frames="0" goto="idle"/>
+  </dyno_led>
+
+  <dyno_bnc path="objects/waldmo/dyno/" start="idle">
+    <Justify x="0.5" y="0.5"/>
+    <Loop id="idle" path="bnc" delay="0.1" frames="0"/>
+    <Anim id="active_multi" path="bnc" delay="0.08" frames="0" goto="idle"/>
+  </dyno_bnc>
+
+
+
+
+
+
 
   <flyFeather path="objects/flyFeather/" start="loop">
     <Justify x="0.5" y="0.5"/>
