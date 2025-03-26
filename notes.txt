@@ -1,26 +1,19 @@
-fix missing light control flag in eotw
-set powerup poem
-added dyno assets
-fixed up crumble block asset to use pk6
+added assets and fixed up spikes, switch gates
+added 1 updraft lore
+placed all main map lores
+added secret access to the other side of the gate
+make secret pink refills go away after getting powerup
+placed hydrants
+add bubble dialog
+added comfs
 
 TODO:
 
 assets:
 
-X diamond rider background (gradient light on paper)
-
-switchgate + icon
-plain spinner
-extractor pipe
-
-X something for dynos
-    fan that spins when you use it
-X    though hole led
-    screw
-X    pin
-X    thumbtack
-    something that pops
- 
+X switchgate + icon
+X plain spinner
+X extractor pipe
 
 torn edges
 
@@ -28,48 +21,49 @@ collectable door replacements for base game assets (scripting work)
     maybe even an icon?
     at least try a mist replacement
 
-lores
+X lores
 
 endscreen
 
 now:
 
-X do stereo spread
+X replace vanilla spikes textures
 
-X make music sound source fade out/cut all params on level end or sthg
-    good enough
+X fix heart gate spikes
+X fix switch gate textures
 
-X set powerup poem
-X    everything is fine?
-X     the black wind howls?
-
-replace vanilla spikes textures
-
-fix switch gate textures
-
-make secret refills not spawn when you have 2 dash
+X make secret refills not spawn when you have 2 dash
 
 X? tune up background parallax colors
 
 make sure that one of the everything is fine notes has like a 2 second delay on the dialog activation
     ideally it should be placed and timed so tht the player is likely to die as a result of the sudden control loss
 
+make invisible tiles invisible
+
+X test dialog bubbles
+X test overside gate loop secret
+
 cameras (ugh)
+
+X comf
 
 postcard
 
-create burnt everything is fine note asset
-create lore (here!)
-    quote the answer (tmbg) somewhere?
-    all the conceptual complexity of a techspam map
-    determinism isn't a theory it's an observation?
-    the meat sweats. it does not understand.
-    day 3: It is still Wednesday. (after getting 2 dash)
+unfuck odd-sized assets?
 
-place lore
-    everything is fine in a-05c, diamond rider, etc when 2dash
-    disable a-05c ending when 2dash?
-place fire hydrants
+create burnt everything is fine note asset
+
+X create lore (here!)
+X     all the conceptual complexity of a techspam map
+X    determinism isn't a theory it's an observation?
+X    the meat sweats. it does not understand.
+X    day 3: It is still Wednesday. (after getting 2 dash)
+
+Xplace lore
+X    everything is fine in a-05c, diamond rider, etc when 2dash
+X    disable a-05c ending when 2dash?
+X place fire hydrants
 
 score 2600 points on diamond rider for a berry
 
@@ -160,22 +154,42 @@ dream blocks
 
 Works Cited: #TODO did i miss any?
 
+This map is based on:
 Verge - Kyle Pulver
 https://www.youtube.com/watch?v=D1WnmN6fsRo
 https://forums.tigsource.com/index.php?topic=3420.0
 
+And also includes:
+<spoiler>
 Diamond Rider - Romeopie Software
 https://www.tigsource.com/2008/02/18/gdc-game-collaboration-1-diamond-rider/
+</spoiler>
 
+Some gameplay inspire by:
+<spoiler>
 Framework - tobyaaa
 https://gamebanana.com/mods/478257
+</spoiler>
 
+But it came out more like:
+<spoiler>
+Moonstone Mines - Anzen_
+<link>
+</spoiler>
+
+Various quotes:
+<spoiler>
 "All the mechanical complexity of a teapot." - smithy
 https://forums.tigsource.com/index.php?topic=2291.msg57242#msg57242
 
-"Everything is fine." - various authors
+"Life is more horrible than death." - Howard Lovecraft and his commonplace book
+
+"Everything is fine."
+</spoiler>
 
 Development Notes:
+
+<stand in the place where I live> This map took longer to make than The Wednesday On The Edge Of Forever...
 
 One day I was wondering how you could go about making dream blocks interesting without a dash, and the first idea that came to mind was what if you could also enter a dream block by fast-falling? In the same thought, I realized that it would be very natural to reverse gravity when you came out the other side. I had wanted to have custom dream block graphics in The Wednesday On The Edge Of Forever, but the existing dream blocks didn't support the kind of paralax grid effect I wanted, and at the time I figured that implementing my own was out of scope, so I just stuck with regular dream blocks and made them into squares to make corners seem less awkward. Now, though, I had a reason to make my own custom dream block. Maybe I could even fix room transitions! So I set to work making the PlaidBlock, and then the instant I tried out the gravity flipping fallthrough mechanic I realized what I had done and changed the name to VergeBlock.
 

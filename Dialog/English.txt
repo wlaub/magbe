@@ -5,3 +5,9 @@ iambad_magbe_1_ch1_author= iambadatvideogamesdotcom
 iambad_magbe_powerup= The black wind howls.
 
 
+iambad_magbe_rails=
+Let's get you back on the rails.
+
+iambad_magbe_careful=
+Careful!
+

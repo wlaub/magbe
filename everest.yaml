@@ -29,6 +29,8 @@
       Version: 1.30.6
     - Name: Microlith57MiscellaneousMechanics
       Version: 1.2.0
+    - Name: OutbackHelper
+      Version: 1.7.3
     - Name: PandorasBox
       Version: 1.0.49
     - Name: ShroomHelper
