@@ -1,19 +1,7 @@
-added assets and fixed up spikes, switch gates
-added 1 updraft lore
-placed all main map lores
-added secret access to the other side of the gate
-make secret pink refills go away after getting powerup
-placed hydrants
-add bubble dialog
-added comfs
 
 TODO:
 
 assets:
-
-X switchgate + icon
-X plain spinner
-X extractor pipe
 
 torn edges
 
@@ -21,28 +9,11 @@ collectable door replacements for base game assets (scripting work)
     maybe even an icon?
     at least try a mist replacement
 
-X lores
-
 endscreen
 
 now:
 
-X replace vanilla spikes textures
-
-X fix heart gate spikes
-X fix switch gate textures
-
-X make secret refills not spawn when you have 2 dash
-
-X? tune up background parallax colors
-
-make sure that one of the everything is fine notes has like a 2 second delay on the dialog activation
-    ideally it should be placed and timed so tht the player is likely to die as a result of the sudden control loss
-
 make invisible tiles invisible
-
-X test dialog bubbles
-X test overside gate loop secret
 
 cameras (ugh)
 
@@ -54,24 +25,38 @@ unfuck odd-sized assets?
 
 create burnt everything is fine note asset
 
-X create lore (here!)
-X     all the conceptual complexity of a techspam map
-X    determinism isn't a theory it's an observation?
-X    the meat sweats. it does not understand.
-X    day 3: It is still Wednesday. (after getting 2 dash)
-
-Xplace lore
-X    everything is fine in a-05c, diamond rider, etc when 2dash
-X    disable a-05c ending when 2dash?
-X place fire hydrants
-
 score 2600 points on diamond rider for a berry
 
+play_once entity:
+show a sprite
+start in idle loop
 
+optional trigger fliag?
+on trigger (i.e. on load) 
+if the flag is set then put the sprite in the done loop/anim
+if not, then do the init loop/anim and set the flag
 
-suffer (fmod)
+edges:
+1416<+ a-05
+440<= a-03
+768<> a-03
+320++ lco animated
+320++ lco
+192<+ lcu
+336<> lco animated
+336<> lcu
+176<> lcoe
+104<+ lcoe
+336<+ lcue animated
+
+424+> (updraft mask)
+
+1872++ x2 (updraft mask)
 
 create updraft intro cutscene
+
+make sure that one of the everything is fine notes has like a 2 second delay on the dialog activation
+    ideally it should be placed and timed so tht the player is likely to die as a result of the sudden control loss
 
 finish redecorating updraft
 maybe: destroy most of the terrain and shift further left, lots of crumble on touch blocks, crumble dynos, might need to reduce dream blocks. it's okay if the connection to twoteof is obscured, even desirabe early in the area.

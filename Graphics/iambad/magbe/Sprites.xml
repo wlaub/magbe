@@ -700,7 +700,20 @@
     <Anim id="break" path="clutter_button" delay="0.08" frames="8-18" goto="active"/>
   </clutterSwitch>
 
- 
+  <tear_a path="decals/iambad/magbe/tears/" start="idle">
+    <Justify x=".5" y="0.5" />
+
+    <Loop id="idle" path="336.lco" delay="0.1" frames="0" />
+
+    <Anim id="open" path="336.lco" delay="0.1" frames="1-10" goto="done"/>
+
+    <Loop id="done" path="336.lco" delay="0.1" frames="10" />
+
+    <Anim id="close" path="336.lco" delay="0.1" frames="10-1" goto="idle"/>
+
+
+  </tear_a> 
+
   <lookout path="objects/waldmo/eye_lookout/" start="idle_end">
     <Justify x=".5" y="1" />
 
