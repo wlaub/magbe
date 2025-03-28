@@ -1,8 +1,12 @@
 iambad_magbe= EDGE™ (a game by) MIRRORS
 iambad_magbe_1_ch1= EDGE™
 iambad_magbe_1_ch1_author= iambadatvideogamesdotcom
+iambad_magbe_1_ch1_postcard= warning: this map is not canon
+
 
 iambad_magbe_powerup= The black wind howls.
+
+iambad_magbe_ending= 
 
 
 iambad_magbe_rails=
