@@ -1,10 +1,5 @@
-fixed up some last climb mirrors
-added remaining main-map torn edges
-fixed wwwwwwww camera
-added postcard
-also added checkpoint image
-added you know the drill note
-various note cleanups
+endscreen and everything is fine update
+unfucked most assets
 
 TODO:
 
@@ -22,29 +17,13 @@ now:
 
 make invisible tiles invisible
 
-X make the camera start lagging on the way to secret
-
 cameras (ugh)
 
-X comf
+X unfuck odd-sized assets?
 
-X postcard
-checkpoint images
-
-unfuck odd-sized assets?
-
-create burnt everything is fine note asset
+X create burnt everything is fine note asset
 
 score 2600 points on diamond rider for a berry
-
-Xplay_once entity:
-Xshow a sprite
-Xstart in idle loop
-
-Xoptional trigger fliag?
-Xon trigger (i.e. on load) 
-Xif the flag is set then put the sprite in the done loop/anim
-Xif not, then do the init loop/anim and set the flag
 
 edges:
 X 1416<+ a-05
