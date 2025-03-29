@@ -1,5 +1,5 @@
-- Name: mirrors_a_game_by_Edge
-  Version: 0.0.1
+- Name: Edge_a_game_by_mirrors
+  Version: 1.0.0
   Dependencies:
     - Name: AdamsAddons
       Version: 1.10.1

@@ -1,12 +1,9 @@
-made invisible tiles invisible
 
 TODO:
 
 assets:
 
 now:
-
-X make invisible tiles invisible
 
 cameras (ugh)
 
