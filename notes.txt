@@ -1,27 +1,26 @@
-endscreen and everything is fine update
-unfucked most assets
+set map icon
+fixed golden collection gravity situation
+invert main map visually when 2dash
+remove looks when 2dash to help w/ upside down not affecting ui indicators
+added updraft torn edges
 
 TODO:
 
 assets:
 
-torn edges
+X torn edges
 
-collectable door replacements for base game assets (scripting work)
+X collectable door replacements for base game assets (scripting work)
     maybe even an icon?
     at least try a mist replacement
 
-endscreen
-
 now:
+
+X what if you flip the main map when 2dash?
 
 make invisible tiles invisible
 
 cameras (ugh)
-
-X unfuck odd-sized assets?
-
-X create burnt everything is fine note asset
 
 score 2600 points on diamond rider for a berry
 
@@ -115,9 +114,7 @@ alternatively emit particles from player location? for underside?
 
 
 
-Description:
-
-You guys remember that game "The Verge" by xerus? Neither do I, apparently. This is a map loosely based on what I remember of Verge after 15 years. I just stumbled on a dream block mechanic that reminded me of the gravity thing in Verge and decided to make a "quick" "little" map demonstrating it.
+ just stumbled on a dream block mechanic that reminded me of the gravity thing in Verge and decided to make a "quick" "little" map demonstrating it.
 
 This map is roughly beginner difficulty with a few wavedashes sprinkled in, but there are also opportunities to use more advanced tech and there are more difficult routes to be found if you feel like it. I would not advise restricting yourself to any particular mechanics based on the minimum difficulty unless you want to.
 
@@ -125,6 +122,28 @@ This map is roughly beginner difficulty with a few wavedashes sprinkled in, but 
 a few small secrets
 gravity flipping
 dream blocks
+
+
+
+Description:
+
+You guys remember that game "The Verge" by xerus? This is a short Verge homage based on memories that are old enough to drive. The map is designed to use any tech you'd like, though there are a few required wavedashes and wallbounces. Difficulty should start around beginning or lower intermediate with secrets up to expert or so.
+
+The audio mod for this map is 350 MB. I am sorry. It is what it is.
+
+Most of the music tracks can be disabled by setting flags (` to open the console and then `flag <flag name> true`). The flags are:
+<spoiler>
+Base music layers:
+disable_swoop
+disable_shroom
+disable_organ
+Hazards:
+disable_thorn
+disable_gd
+disable_shard
+</spoiler>
+
+
 
 Works Cited: #TODO did i miss any?
 
