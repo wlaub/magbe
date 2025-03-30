@@ -1,3 +1,4 @@
+fixed top side tear to be global and animate more properly so it doesnt look jank the second time through
 
 TODO:
 
