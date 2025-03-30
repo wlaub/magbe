@@ -8,6 +8,9 @@ iambad_magbe_powerup= The black wind howls.
 
 iambad_magbe_ending= 
 
+iambad_magbe_updraft_title=UPDRAFT
+iambad_magbe_updraft_subtitle=Forgotten Subterranean Canyon
+
 
 iambad_magbe_rails=
 Let's get you back on the rails.

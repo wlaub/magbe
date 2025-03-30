@@ -1,4 +1,6 @@
-fixed top side tear to be global and animate more properly so it doesnt look jank the second time through
+blew updraft
+added updraft cutscene
+lower updraft upclimb gameplay
 
 TODO:
 
@@ -9,6 +11,46 @@ now:
 cameras (ugh)
 
 score 2600 points on diamond rider for a berry
+
+all:
+background text
+X   i've been watching
+X    listening
+    observing
+    and i think maybe
+    something is wrong with the universe
+
+
+lower updraft:
+X explode more
+X upclimb gameplay
+X notes
+X comf
+more notes
+reactor lore
+make crumbly
+downclimb gameplay
+
+upper updraft:
+explode more
+upclimb gameplay
+notes
+comf
+make crumbly
+more notes
+downclimb gameplay
+
+upstream:
+intro cutscene: upstream
+upclimb gameplay
+notes
+comf
+golden berry switch effect
+make crumbly
+more notes
+troll note
+downclimb gameplay
+
 
 create updraft intro cutscene
 
@@ -36,13 +78,6 @@ a secret room above the first double refill
     requires bubbling back, waiting for respawn, then jumping left and dashing up through the refill
 
 updraft:
-
-background text
-    i've been watching
-    listening
-    observing
-    and i think maybe
-    something is wrong with the universe
 
 maybe updraft can be all crumbly (at least in the east section)
 

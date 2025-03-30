@@ -17,6 +17,8 @@
       Version: 1.3471.0
     - Name: ExtendedVariantMode
       Version: 0.40.1
+    - Name: FactoryHelper
+      Version: 1.3.9
     - Name: FlaglinesAndSuch
       Version: 1.6.30
     - Name: FrostHelper
