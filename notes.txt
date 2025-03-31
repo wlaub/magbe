@@ -1,6 +1,3 @@
-blew updraft
-added updraft cutscene
-lower updraft upclimb gameplay
 
 TODO:
 
@@ -26,16 +23,15 @@ X explode more
 X upclimb gameplay
 X notes
 X comf
-more notes
 reactor lore
 make crumbly
 downclimb gameplay
 
 upper updraft:
-explode more
-upclimb gameplay
-notes
-comf
+X explode more
+X upclimb gameplay
+X notes
+X comf
 make crumbly
 more notes
 downclimb gameplay
@@ -45,10 +41,11 @@ intro cutscene: upstream
 upclimb gameplay
 notes
 comf
-golden berry switch effect
+X golden berry switch effect
 make crumbly
 more notes
 troll note
+X you were never seen again ending
 downclimb gameplay
 
 
