@@ -1,7 +1,3 @@
-all updraft/upstream gameplay
-fixed up everything is fine dialog to happen every time
-everything except golden music and reactor lore
-
 
 TODO:
 
@@ -14,69 +10,16 @@ cameras (ugh)
 score 2600 points on diamond rider for a berry
 
 all:
-reactor lore
-X upstream intro cutscene
-golden music
+X reactor lore
+X golden music
 golden mirrors on backtrack?
+X remove under construction sign
+get a second screenshot for game banana page?
 
-X background text
-X   i've been watching
-X    listening
-X    observing
-X    and i think maybe
-X    something is wrong with the universe
-X extra golden
-X extra golden
-X extra golden
-X extra golden
-X extra golden
-X extra golden
-
-
-lower updraft:
-X explode more
-X upclimb gameplay
-X notes
-X comf
-
-X downclimb gameplay
-
-upper updraft:
-X explode more
-X upclimb gameplay
-X notes
-X comf
-X downclimb gameplay
-
-upstream:
-intro cutscene: upstream
-X make crumbly
-X upclimb gameplay
-X notes
-X comf
-X golden berry switch effect
-X more notes
-X troll note
-X you were never seen again ending
-X downclimb gameplay
-
-
-create updraft intro cutscene
-
-make sure that one of the everything is fine notes has like a 2 second delay on the dialog activation
-    ideally it should be placed and timed so tht the player is likely to die as a result of the sudden control loss
-
-finish redecorating updraft
 maybe: destroy most of the terrain and shift further left, lots of crumble on touch blocks, crumble dynos, might need to reduce dream blocks. it's okay if the connection to twoteof is obscured, even desirabe early in the area.
 the transition from main map can just be that you can only reach the top of the room on the right, but after that you're free to dash up and down the transition all you want. - might require some adjustment to make the room taller and to reach a higher jump refill
 maybe most of the dream blocks are exposed but you can't dash into the ends of them so you can't travel inside them - only orthogonal and diagonal dashes
 make permanent trigger that when you go through it makes like crumbled blocks permanent in a room? so you can have reusable crumble blocks that become permanent once you clear the room out the other side, and then you'd better have left some behind for the downclimb.
-
-implement updraft gameplay
-
-add everything is fine notes to updraft
-
-implement golden berry gameplay (updraft)
 
 adjust tileset cropping offset to try to improve alignment
 add corner masking to new tilesets
@@ -156,7 +99,7 @@ disable_gd
 disable_shard
 </spoiler>
 
-
+I am not 100% sure that the golden strawberry is possible to collect, but it should be.
 
 Works Cited: #TODO did i miss any?
 
@@ -195,7 +138,9 @@ https://forums.tigsource.com/index.php?topic=2291.msg57242#msg57242
 
 Development Notes:
 
-<stand in the place where I live> This map took longer to make than The Wednesday On The Edge Of Forever...
+https://www.youtube.com/watch?v=2jqKiVHS6x4 
+
+While I'm pretty happy with the result, this took more hours of work than The Wednesday On The Edge Of Forever (while also reusing a lot of that work), and it doesn't show. I figured that since it's such a short map it would be a good way to try some things that might not be viable for a larger map (and they aren't). I'm glad I did it, but I won't do it again.
 
 One day I was wondering how you could go about making dream blocks interesting without a dash, and the first idea that came to mind was what if you could also enter a dream block by fast-falling? In the same thought, I realized that it would be very natural to reverse gravity when you came out the other side. I had wanted to have custom dream block graphics in The Wednesday On The Edge Of Forever, but the existing dream blocks didn't support the kind of paralax grid effect I wanted, and at the time I figured that implementing my own was out of scope, so I just stuck with regular dream blocks and made them into squares to make corners seem less awkward. Now, though, I had a reason to make my own custom dream block. Maybe I could even fix room transitions! So I set to work making the PlaidBlock, and then the instant I tried out the gravity flipping fallthrough mechanic I realized what I had done and changed the name to VergeBlock.
 

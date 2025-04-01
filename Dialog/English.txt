@@ -21,6 +21,17 @@ Let's get you back on the rails.
 iambad_magbe_careful=
 Careful!
 
+iambad_magbe_consume_me_question=
+[MADELINE left normal]
+ {3}
+[MADELINE left normal]
+ {3}
+[MADELINE left normal]
+ {1}
+[MADELINE left normal]
+I won't let it consume me?
+
+
 
 iambad_magbe_7_days=
 [NOISE left normal]
