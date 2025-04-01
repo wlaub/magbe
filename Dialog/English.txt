@@ -11,10 +11,24 @@ iambad_magbe_ending=
 iambad_magbe_updraft_title=UPDRAFT
 iambad_magbe_updraft_subtitle=Forgotten Subterranean Canyon
 
+iambad_magbe_upstream_title=UPSTREAM
+iambad_magbe_upstream_subtitle=Abandoned Riverbed
+
 
 iambad_magbe_rails=
 Let's get you back on the rails.
 
 iambad_magbe_careful=
 Careful!
+
+
+iambad_magbe_7_days=
+[NOISE left normal]
+{*}{>> 0.1} 7 days ...{>>}{/*}
+
+[NOISE left normal]
+maybe less
+
+
+
 

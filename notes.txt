@@ -1,3 +1,7 @@
+all updraft/upstream gameplay
+fixed up everything is fine dialog to happen every time
+everything except golden music and reactor lore
+
 
 TODO:
 
@@ -10,12 +14,23 @@ cameras (ugh)
 score 2600 points on diamond rider for a berry
 
 all:
-background text
+reactor lore
+X upstream intro cutscene
+golden music
+golden mirrors on backtrack?
+
+X background text
 X   i've been watching
 X    listening
-    observing
-    and i think maybe
-    something is wrong with the universe
+X    observing
+X    and i think maybe
+X    something is wrong with the universe
+X extra golden
+X extra golden
+X extra golden
+X extra golden
+X extra golden
+X extra golden
 
 
 lower updraft:
@@ -23,30 +38,27 @@ X explode more
 X upclimb gameplay
 X notes
 X comf
-reactor lore
-make crumbly
-downclimb gameplay
+
+X downclimb gameplay
 
 upper updraft:
 X explode more
 X upclimb gameplay
 X notes
 X comf
-make crumbly
-more notes
-downclimb gameplay
+X downclimb gameplay
 
 upstream:
 intro cutscene: upstream
-upclimb gameplay
-notes
-comf
+X make crumbly
+X upclimb gameplay
+X notes
+X comf
 X golden berry switch effect
-make crumbly
-more notes
-troll note
+X more notes
+X troll note
 X you were never seen again ending
-downclimb gameplay
+X downclimb gameplay
 
 
 create updraft intro cutscene
