@@ -1,5 +1,5 @@
 - Name: Edge_a_game_by_mirrors
-  Version: 1.0.0
+  Version: 1.0.1
   Dependencies:
     - Name: AdamsAddons
       Version: 1.13.3
@@ -12,7 +12,7 @@
     - Name: CrystallineHelper
       Version: 1.16.5
     - Name: Errand Of Wednesday
-      Version: 0.2.0
+      Version: 0.2.1
     - Name: Everest
       Version: 1.3471.0
     - Name: ExtendedVariantMode
